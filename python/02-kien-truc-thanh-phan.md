@@ -53,14 +53,14 @@ Tức là:
 ### 3.2. Flow dữ liệu trong runtime mô phỏng
 
 ```text
-prompt
-└─ route_prompt()
-   └─ ExecutionRegistry
-      └─ QueryEnginePort.submit_message()
-         ├─ mutable_messages
-         ├─ transcript entries
-         ├─ usage totals
-         └─ persisted session JSON
+┌────────┐    ┌──────────────┐    ┌──────────────────┐    ┌─────────────────────┐
+│ prompt │───►│ route_prompt │───►│ ExecutionRegistry │───►│ QueryEnginePort     │
+└────────┘    └──────────────┘    └──────────────────┘    ├─────────────────────┤
+                                                           │ ├─ mutable_messages │
+                                                           │ ├─ transcript       │
+                                                           │ ├─ usage totals     │
+                                                           │ └─ session JSON     │
+                                                           └─────────────────────┘
 ```
 
 Ảnh trên cho thấy data flow thật sự của Python port:

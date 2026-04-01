@@ -11,22 +11,15 @@ File này trả lời 3 câu hỏi thực dụng:
 ## 2. Những vùng đã có test đáng kể
 
 ```text
-visible test clusters
-├─ runtime
-├─ tools
-├─ plugins
-├─ commands
-└─ lsp
-
-main risk clusters
-├─ active path drift
-│  └─ main.rs vs args.rs / app.rs
-├─ doc drift
-│  └─ README vs source
-├─ MCP drift
-│  └─ config breadth > execution depth
-└─ local env gap
-   └─ no cargo verification on this machine
+┌──────────────────────────┐  ┌──────────────────────────┐
+│ visible test clusters    │  │ main risk clusters       │
+├──────────────────────────┤  ├──────────────────────────┤
+│ ├─ runtime               │  │ ├─ active path drift     │
+│ ├─ tools                 │  │ │  └─ main.rs vs others  │
+│ ├─ plugins               │  │ ├─ doc drift             │
+│ ├─ commands              │  │ ├─ MCP drift             │
+│ └─ lsp                   │  │ └─ local env gap         │
+└──────────────────────────┘  └──────────────────────────┘
 ```
 
 Qua source hiện tại có thể thấy test xuất hiện ở nhiều crate quan trọng:

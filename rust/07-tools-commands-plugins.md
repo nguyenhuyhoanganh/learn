@@ -11,18 +11,33 @@ Nếu `runtime` là tim và `api` là miệng tai kết nối với model, thì:
 Ba crate này giải bài toán: làm sao để agent không chỉ trả lời, mà còn có thể hành động theo cách có tổ chức.
 
 ```text
-model sees
-└─ ToolDefinition list
-   └─ GlobalToolRegistry
-      ├─ built-in tools
-      └─ plugin tools
-         └─ PermissionPolicy
-            └─ runtime executes tool
+┌──────────────────────────┐
+│ model sees ToolDefs      │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ GlobalToolRegistry       │
+├──────────────────────────┤
+│ ├─ built-in tools        │
+│ └─ plugin tools          │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ PermissionPolicy         │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ runtime executes tool    │
+└──────────────────────────┘
 
-parallel user workflow layer
-└─ slash command
-   └─ commands crate
-      └─ git / plugin / agent / skill UX
+┌──────────────────────────┐
+│ slash command            │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ commands crate           │
+│ git / plugin / agent UX  │
+└──────────────────────────┘
 ```
 
 ## 2. Crate `tools` làm gì
@@ -186,13 +201,25 @@ Nhưng source trong `plugins` cho thấy ngược lại.
 ### 7.2. Plugin manifest có gì
 
 ```text
-plugin source
-└─ manifest validation
-   └─ install registry + enabled state
-      └─ PluginRegistry
-         ├─ aggregated hooks
-         ├─ plugin tools
-         └─ lifecycle init / shutdown
+┌──────────────────────────┐
+│ plugin source            │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ manifest validation      │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ install + enabled state  │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ PluginRegistry           │
+├──────────────────────────┤
+│ ├─ aggregated hooks      │
+│ ├─ plugin tools          │
+│ └─ lifecycle init/shut   │
+└──────────────────────────┘
 ```
 
 Plugin manifest mô tả:

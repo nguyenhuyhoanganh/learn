@@ -13,43 +13,50 @@ Rust runtime kết nối với hệ sinh thái ngoài như thế nào?
 - dùng HTTP/SSE server để expose session ra ngoài
 
 ```text
-external integrations around runtime
-├─ MCP
-│  └─ external tools / resources
-├─ LSP
-│  └─ diagnostics / defs / refs
-│     └─ prompt enrichment
-├─ server
-│  └─ HTTP + SSE session surface
-└─ compat-harness
-   └─ upstream TS parity extraction
+┌──────────────────────────┐  ┌──────────────────────────┐
+│ MCP                      │  │ LSP                      │
+├──────────────────────────┤  ├──────────────────────────┤
+│ external tools/resources │  │ diagnostics / defs / refs│
+└──────────────────────────┘  │ └─ prompt enrichment     │
+                              └──────────────────────────┘
+
+┌──────────────────────────┐  ┌──────────────────────────┐
+│ server                   │  │ compat-harness           │
+├──────────────────────────┤  ├──────────────────────────┤
+│ HTTP + SSE session surf. │  │ upstream TS parity       │
+└──────────────────────────┘  └──────────────────────────┘
 ```
 
 ## 2. MCP trong Rust được chia thành mấy lớp
 
 ```text
-MCP
-├─ config knows
-│  ├─ stdio
-│  ├─ sse
-│  ├─ http
-│  ├─ ws
-│  ├─ sdk
-│  └─ managed-proxy
-└─ strongest operational manager today
-   └─ stdio
+┌──────────────────────────┐
+│ MCP                      │
+├──────────────────────────┤
+│ config knows             │
+│ ├─ stdio / sse / http    │
+│ ├─ ws / sdk              │
+│ └─ managed-proxy         │
+│ strongest manager: stdio │
+└──────────────────────────┘
 
-LSP
-└─ open / change / save doc
-   └─ diagnostics + definitions + references
-      └─ prompt section
+┌──────────────────────────┐
+│ LSP                      │
+├──────────────────────────┤
+│ open/change/save doc     │
+│ └─ diagnostics/defs/refs │
+│    └─ prompt section     │
+└──────────────────────────┘
 
-server
-├─ POST /sessions
-├─ GET  /sessions
-├─ GET  /sessions/{id}
-├─ GET  /sessions/{id}/events
-└─ POST /sessions/{id}/message
+┌──────────────────────────┐
+│ server                   │
+├──────────────────────────┤
+│ POST /sessions           │
+│ GET  /sessions           │
+│ GET  /sessions/{id}      │
+│ GET  /sessions/{id}/events│
+│ POST /sessions/{id}/msg  │
+└──────────────────────────┘
 ```
 
 Ít nhất có 3 lớp:

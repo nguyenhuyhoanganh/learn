@@ -10,21 +10,23 @@ File này chỉ tập trung vào hai câu hỏi:
 Đây là chỗ rất dễ bị hiểu sai khi mới đọc repo.
 
 ```text
-prompt
-└─ route_prompt()
-   └─ matches
-      └─ ExecutionRegistry
-         └─ QueryEnginePort
-            └─ output
+┌────────┐    ┌──────────────┐    ┌──────────────────┐    ┌────────────────┐
+│ prompt │───►│ route_prompt │───►│ ExecutionRegistry │───►│ QueryEnginePort│
+└────────┘    └──────────────┘    └──────────────────┘    └───────┬────────┘
+                                                                   │
+                                                                   ▼
+                                                             ┌──────────┐
+                                                             │ output   │
+                                                             └──────────┘
 ```
 
 ```text
-token overlap / simple scoring
-└─ matched commands + tools
-   └─ MirroredCommand / MirroredTool
-      └─ execute_command() / execute_tool()
-         └─ shim message
-            └─ not deep production business logic
+┌──────────────────────────┐    ┌──────────────────────────┐    ┌──────────────────────────┐
+│ simple scoring           │───►│ MirroredCommand / Tool   │───►│ shim execution           │
+├──────────────────────────┤    ├──────────────────────────┤    ├──────────────────────────┤
+│ token overlap matching   │    │ matched inventory entry  │    │ execute_command/tool()   │
+└──────────────────────────┘    └──────────────────────────┘    │ not deep business logic  │
+                                                                └──────────────────────────┘
 ```
 
 ## 2. `route_prompt()` trong `runtime.py`

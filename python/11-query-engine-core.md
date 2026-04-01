@@ -71,13 +71,19 @@ Mental model tốt nhất:
 - mỗi lần `submit_message()` là một lần state machine tiến một bước
 
 ```text
-user prompt
-└─ submit_message()
-   ├─ append to mutable_messages
-   ├─ append to transcript
-   ├─ update token counters
-   ├─ decide stop_reason
-   └─ return TurnResult
+┌─────────────┐
+│ user prompt │
+└──────┬──────┘
+       ▼
+┌──────────────────────────┐
+│ submit_message()         │
+├──────────────────────────┤
+│ ├─ append mutable_msgs   │
+│ ├─ append transcript     │
+│ ├─ update token counters │
+│ ├─ decide stop_reason    │
+│ └─ return TurnResult     │
+└──────────────────────────┘
 ```
 
 ## 3. `from_workspace()` và `from_saved_session()`

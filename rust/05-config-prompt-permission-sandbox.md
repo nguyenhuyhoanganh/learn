@@ -15,20 +15,35 @@ Trong hệ thống này, chất lượng hành vi của agent phụ thuộc rấ
 Nếu 4 lớp này không hiểu rõ, bạn sẽ sửa feature trong khi không biết agent thực ra đang được dẫn dắt và giới hạn bởi cái gì.
 
 ```text
-config files
-└─ ConfigLoader merge
-   ├─ typed RuntimeConfig
-   │  ├─ model
-   │  ├─ oauth
-   │  ├─ plugins
-   │  ├─ hooks
-   │  ├─ mcp
-   │  └─ sandbox
-   └─ ProjectContext + instruction files + git state
-      └─ SystemPromptBuilder
-         └─ Permission gate
-            └─ Sandbox capability check
-               └─ final runtime behavior before tool execution
+┌──────────────────────────┐
+│ config files             │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ ConfigLoader merge       │
+├──────────────────────────┤
+│ ├─ typed RuntimeConfig   │
+│ │  ├─ model              │
+│ │  ├─ oauth              │
+│ │  ├─ plugins/hooks      │
+│ │  ├─ mcp                │
+│ │  └─ sandbox            │
+│ └─ ProjectContext        │
+│    ├─ instructions       │
+│    └─ git state          │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ SystemPromptBuilder      │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ Permission gate          │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ Sandbox capability check │
+└──────────────────────────┘
 ```
 
 ## 2. Config được nạp từ đâu

@@ -14,14 +14,19 @@ Nếu là người mới, hãy đọc theo thứ tự:
 5. file playbook này
 
 ```text
-Fresher loop
-├─ Step 1: read overview
-├─ Step 2: map modules
-├─ Step 3: trace CLI flow
-├─ Step 4: trace query engine state
-├─ Step 5: read parity + gaps
-└─ Step 6: self-check
-   └─ can you explain mirror vs simulation vs real mutation?
+┌──────────────────────┐   ┌──────────────────────┐   ┌──────────────────────┐
+│ Step 1               │   │ Step 2               │   │ Step 3               │
+├──────────────────────┤   ├──────────────────────┤   ├──────────────────────┤
+│ read overview        │──►│ map modules          │──►│ trace CLI flow       │
+└──────────────────────┘   └──────────────────────┘   └──────────────────────┘
+
+┌──────────────────────┐   ┌──────────────────────┐   ┌──────────────────────┐
+│ Step 4               │   │ Step 5               │   │ Step 6               │
+├──────────────────────┤   ├──────────────────────┤   ├──────────────────────┤
+│ trace query engine   │──►│ read parity + gaps   │──►│ self-check: can you  │
+│ state                │   │                      │   │ explain mirror vs    │
+│                      │   │                      │   │ simulation vs mutation│
+└──────────────────────┘   └──────────────────────┘   └──────────────────────┘
 ```
 
 ## 2. Bản đồ học nhanh trong 60-90 phút

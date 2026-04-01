@@ -13,20 +13,19 @@ Thực tế đây là 3 lớp liên quan nhưng không giống nhau.
 File này tách riêng chủ đề đó để tránh hiểu sai.
 
 ```text
-TranscriptStore
-├─ append()
-├─ compact()
-├─ replay()
-└─ flush()
-   └─ in-memory entries only
+┌──────────────────────────┐    ┌──────────────────────────┐
+│ TranscriptStore          │    │ SessionStore             │
+├──────────────────────────┤    ├──────────────────────────┤
+│ ├─ append()             │    │ ├─ save_session()        │
+│ ├─ compact()            │    │ └─ load_session()        │
+│ ├─ replay()             │    │    └─ .port_sessions/*   │
+│ └─ flush()              │    └──────────────────────────┘
+│    └─ in-memory only    │
+└──────────────────────────┘
 
-SessionStore
-├─ save_session()
-└─ load_session()
-   └─ .port_sessions/*.json
-
-note
-└─ transcript buffer != persisted session payload
+┌──────────────────────────────────────────────┐
+│ note: transcript buffer != persisted session │
+└──────────────────────────────────────────────┘
 ```
 
 ## 2. `TranscriptStore` trong `transcript.py`

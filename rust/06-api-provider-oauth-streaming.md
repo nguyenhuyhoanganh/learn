@@ -16,16 +16,33 @@ Nó phải giải đồng thời 4 việc:
 ## 2. Mô hình abstraction của crate
 
 ```text
-credentials / env / saved OAuth
-└─ provider resolution
-   ├─ Claw
-   ├─ OpenAI
-   └─ xAI
-      └─ canonical request types
-         └─ vendor-specific translation
-            └─ SSE / streaming / retry / backoff
-               └─ normalized StreamEvent
-                  └─ runtime
+┌──────────────────────────┐
+│ credentials / env / OAuth│
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ provider resolution      │
+├──────────────────────────┤
+│ ├─ Claw                  │
+│ ├─ OpenAI                │
+│ └─ xAI                   │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ canonical request types  │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ vendor translation       │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ stream / retry / backoff │
+└──────┬───────────────────┘
+       ▼
+┌──────────────────────────┐
+│ normalized StreamEvent   │
+└──────────────────────────┘
 ```
 
 Các trục chính:

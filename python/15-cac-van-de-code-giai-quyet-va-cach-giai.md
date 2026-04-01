@@ -18,17 +18,19 @@ File này đi theo hướng khác:
 - người chuẩn bị port tiếp muốn biết đâu là chiến lược hiện tại
 
 ```text
-problem → solution style in Python port
-├─ inventory visibility
-│  └─ snapshots + cached metadata loaders
-├─ routing simulation
-│  └─ simple matching + registry bridge
-├─ state demonstration
-│  └─ QueryEnginePort + transcript/session store
-├─ parity measurement
-│  └─ reference data + audit reports
-└─ deep runtime execution
-   └─ mostly not solved here; simulated lightly
+┌──────────────────────────┐  ┌──────────────────────────┐  ┌──────────────────────────┐
+│ inventory visibility     │  │ routing simulation       │  │ state demonstration      │
+├──────────────────────────┤  ├──────────────────────────┤  ├──────────────────────────┤
+│ snapshots + cached meta  │  │ simple matching +        │  │ QueryEnginePort +        │
+│ loaders                  │  │ registry bridge          │  │ transcript/session store │
+└──────────────────────────┘  └──────────────────────────┘  └──────────────────────────┘
+
+┌──────────────────────────┐  ┌──────────────────────────┐
+│ parity measurement       │  │ deep runtime execution   │
+├──────────────────────────┤  ├──────────────────────────┤
+│ reference data + audit   │  │ mostly not solved here;  │
+│ reports                  │  │ simulated lightly        │
+└──────────────────────────┘  └──────────────────────────┘
 ```
 
 ## 2. Kết luận ngắn nhất trước khi đi vào chi tiết

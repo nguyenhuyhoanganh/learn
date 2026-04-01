@@ -16,26 +16,24 @@ File này zoom vào phần “khởi động hệ thống” trong Python port:
 - nhưng mới mirror ở mức hình dạng flow, chưa phải side effect production
 
 ```text
-bootstrap path
-CLI
-└─ runtime.bootstrap_session()
-   ├─ context + setup
-   ├─ route_prompt()
-   ├─ registry shims
-   ├─ query engine
-   └─ session report
+┌────────────┐    ┌──────────────────────┐    ┌─────────────────────┐
+│    CLI     │───►│ bootstrap_session()  │───►│ session report      │
+└────────────┘    ├──────────────────────┤    └─────────────────────┘
+                  │ ├─ context + setup   │
+                  │ ├─ route_prompt()    │
+                  │ ├─ registry shims    │
+                  │ └─ query engine      │
+                  └──────────────────────┘
 ```
 
 ```text
-setup.py
-├─ prefetch stubs
-├─ project scan
-└─ deferred init
-   └─ bootstrap_graph intent
-      └─ mode branching
-         ├─ report path
-         ├─ runtime simulation path
-         └─ audit path
+┌──────────────────────┐    ┌──────────────────────┐    ┌──────────────────────┐
+│ setup.py             │───►│ bootstrap_graph      │───►│ mode branching       │
+├──────────────────────┤    ├──────────────────────┤    ├──────────────────────┤
+│ ├─ prefetch stubs    │    │ startup intent model │    │ ├─ report path       │
+│ ├─ project scan      │    └──────────────────────┘    │ ├─ runtime sim path  │
+│ └─ deferred init     │                                │ └─ audit path        │
+└──────────────────────┘                                └──────────────────────┘
 ```
 
 ## 2. `setup.py` đang làm gì thật sự?

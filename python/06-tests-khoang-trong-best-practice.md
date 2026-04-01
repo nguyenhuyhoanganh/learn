@@ -12,21 +12,14 @@ Sau khi hiểu kiến trúc và luồng chạy, fresher thường hỏi 4 câu:
 Chương này trả lời trực tiếp 4 câu đó.
 
 ```text
-risk map
-├─ safer areas
-│  ├─ inventory loading
-│  ├─ reports
-│  ├─ parity summaries
-│  └─ basic session persistence
-├─ mid-risk areas
-│  ├─ routing
-│  ├─ bootstrap simulation
-│  └─ query engine flow
-└─ high-risk interpretation areas
-   ├─ placeholder subsystems
-   ├─ shallow permission model
-   ├─ double-submit bootstrap bug
-   └─ runtime depth still limited
+┌──────────────────────────────┐  ┌──────────────────────────────┐  ┌──────────────────────────────┐
+│ safer areas                  │  │ mid-risk areas               │  │ high-risk areas              │
+├──────────────────────────────┤  ├──────────────────────────────┤  ├──────────────────────────────┤
+│ ├─ inventory loading         │  │ ├─ routing                   │  │ ├─ placeholder subsystems    │
+│ ├─ reports                   │  │ ├─ bootstrap simulation      │  │ ├─ shallow permission model  │
+│ ├─ parity summaries          │  │ └─ query engine flow         │  │ ├─ double-submit bug         │
+│ └─ basic session persistence │  └──────────────────────────────┘  │ └─ runtime depth limited     │
+└──────────────────────────────┘                                     └──────────────────────────────┘
 ```
 
 ## 2. Tình trạng test hiện tại

@@ -20,24 +20,21 @@ Kết luận rất nhanh sau khi đọc file này:
 - chưa phải executor nghiệp vụ production
 
 ```text
-main.py parser
-├─ inventory/report commands
-│  ├─ summary
-│  ├─ manifest
-│  ├─ commands / tools
-│  └─ graphs / parity
-├─ runtime simulation commands
-│  ├─ route
-│  ├─ bootstrap
-│  └─ turn-loop
-├─ session commands
-│  ├─ flush-transcript
-│  └─ load-session
-└─ mode-branching commands
-   ├─ remote-mode
-   ├─ ssh-mode
-   ├─ teleport-mode
-   └─ ...
+                   ┌────────────────┐
+                   │ build_parser() │
+                   └───────┬────────┘
+                           │
+      ┌────────────────────┼────────────────────┬────────────────────┐
+      │                    │                    │                    │
+      ▼                    ▼                    ▼                    ▼
+┌────────────────┐  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐
+│ inventory/report│  │ runtime sim.   │  │ session cmds   │  │ mode branching │
+├────────────────┤  ├────────────────┤  ├────────────────┤  ├────────────────┤
+│ ├─ summary     │  │ ├─ route       │  │ ├─ flush       │  │ ├─ remote-mode │
+│ ├─ manifest    │  │ ├─ bootstrap   │  │ └─ load-session│  │ ├─ ssh-mode    │
+│ ├─ commands    │  │ └─ turn-loop   │  └────────────────┘  │ ├─ teleport    │
+│ └─ parity/graph│  └────────────────┘                      │ └─ ...         │
+└────────────────┘                                          └────────────────┘
 ```
 
 ## 2. `build_parser()` đang kể câu chuyện gì?

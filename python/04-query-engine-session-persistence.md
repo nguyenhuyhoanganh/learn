@@ -262,16 +262,14 @@ Vì thế:
 ## 9. Sơ đồ trạng thái của một session
 
 ```text
-new engine
-└─ ready state
-   ├─ session_id
-   ├─ mutable_messages
-   └─ usage
-      └─ submit_message()
-         ├─ completed
-         ├─ max_budget_reached
-         ├─ max_turns_reached
-         └─ flush_transcript() + save_session()
+┌──────────────┐    ┌──────────────────────────┐    ┌──────────────────────────┐
+│  new engine  │───►│ ready state              │───►│ submit_message()         │
+└──────────────┘    ├──────────────────────────┤    ├──────────────────────────┤
+                    │ ├─ session_id            │    │ ├─ completed             │
+                    │ ├─ mutable_messages      │    │ ├─ max_budget_reached    │
+                    │ └─ usage                 │    │ ├─ max_turns_reached     │
+                    └──────────────────────────┘    │ └─ flush + save_session  │
+                                                    └──────────────────────────┘
 ```
 
 Ảnh trên giúp phân biệt rõ:

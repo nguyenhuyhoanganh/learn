@@ -39,7 +39,7 @@ Nếu bạn là fresher mới vào dự án:
 
 ### Sơ đồ minh hoạ
 
-- Các sơ đồ Python hiện được nhúng trực tiếp trong từng file markdown dưới dạng code block ASCII.
+- Các sơ đồ Python hiện được nhúng trực tiếp trong từng file markdown dưới dạng ` ```text ` với box-drawing characters như `┌ ┐ └ ┘ │ ─ ├`.
 - Không còn phụ thuộc ảnh để đọc luồng kiến trúc.
 
 ## Phần Rust
@@ -60,7 +60,7 @@ Nếu bạn là fresher mới vào dự án:
 
 ### Sơ đồ minh hoạ
 
-- Các sơ đồ Rust hiện được nhúng trực tiếp trong từng file markdown dưới dạng code block ASCII.
+- Các sơ đồ Rust hiện được nhúng trực tiếp trong từng file markdown dưới dạng ` ```text ` với box-drawing characters như `┌ ┐ └ ┘ │ ─ ├`.
 - Không còn phụ thuộc ảnh để đọc luồng kiến trúc.
 
 ## Gợi ý lộ trình cho fresher
@@ -95,5 +95,5 @@ Nếu bạn là fresher mới vào dự án:
 - Python và Rust không ở cùng mức độ hoàn thiện.
 - Python phù hợp để hiểu bề mặt và intent kiến trúc.
 - Rust phù hợp để hiểu runtime agent thực sự đang được xây như thế nào.
-- Các sơ đồ Mermaid và ảnh nhúng đã được thay bằng code block ASCII để đọc ổn định ngay trong markdown.
+- Các sơ đồ Mermaid và ảnh nhúng đã được thay bằng sơ đồ khối trong ` ```text ` để đọc ổn định ngay trong markdown.
 - Riêng phần Rust trong vòng tài liệu hiện tại được xác nhận bằng static code reading; môi trường local hiện không có `cargo` trong `PATH`, nên chưa chạy build/test lại trực tiếp từ máy này.

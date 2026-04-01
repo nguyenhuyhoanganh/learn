@@ -17,16 +17,22 @@ Các nhóm file cốt lõi:
 - `subsystems/*.json`
 
 ```text
-frozen reference data
-├─ command snapshot
-├─ tool snapshot
-├─ archive surface snapshot
-└─ subsystem metadata
-   └─ parity_audit.py
-      └─ outputs
-         ├─ coverage
-         ├─ inventory ratio
-         └─ subsystem visibility
+┌──────────────────────────────┐
+│ frozen reference data        │
+├──────────────────────────────┤
+│ ├─ command snapshot          │
+│ ├─ tool snapshot             │
+│ ├─ archive surface snapshot  │
+│ └─ subsystem metadata        │
+└──────────────┬───────────────┘
+               ▼
+┌──────────────────────────────┐
+│ parity_audit.py              │
+├──────────────────────────────┤
+│ ├─ coverage                  │
+│ ├─ inventory ratio           │
+│ └─ subsystem visibility      │
+└──────────────────────────────┘
 ```
 
 ## 2. `archive_surface_snapshot.json` nói gì?

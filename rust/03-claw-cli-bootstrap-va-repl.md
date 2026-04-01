@@ -114,22 +114,27 @@ Mode này:
 ## 6. Bootstrap flow thực tế
 
 ```text
-args
-└─ parse_args()
-   └─ CliAction
-      ├─ Prompt
-      │  └─ load config
-      │     ├─ load system prompt
-      │     ├─ load plugins / tools
-      │     └─ LiveCli
-      ├─ Repl
-      │  └─ same bootstrap + interactive loop
-      ├─ Resume
-      │  └─ load session + resume-safe commands
-      ├─ Login
-      │  └─ OAuth loopback flow
-      └─ Utility
-         └─ manifests / version / agents / skills
+┌────────────┐
+│    args    │
+└─────┬──────┘
+      ▼
+┌──────────────────────┐
+│ parse_args()         │
+└─────┬────────────────┘
+      ▼
+┌──────────────────────┐
+│ CliAction            │
+├──────────────────────┤
+│ ├─ Prompt            │
+│ │  └─ load config    │
+│ │     ├─ system prompt
+│ │     ├─ plugins/tools
+│ │     └─ LiveCli     │
+│ ├─ Repl              │
+│ ├─ Resume            │
+│ ├─ Login             │
+│ └─ Utility           │
+└──────────────────────┘
 ```
 
 Luồng khái niệm:
@@ -200,17 +205,23 @@ Logout thì đơn giản hơn:
 ## 9. `args.rs` và `app.rs` nên hiểu ra sao
 
 ```text
-ACTIVE PATH
-└─ Cargo binary
-   └─ src/main.rs
-      └─ run()
-         └─ parse_args()
-            └─ CliAction
-               └─ LiveCli
+┌──────────────────────────┐
+│ ACTIVE PATH              │
+├──────────────────────────┤
+│ Cargo binary             │
+│ └─ src/main.rs           │
+│    └─ run()              │
+│       └─ parse_args()    │
+│          └─ CliAction    │
+│             └─ LiveCli   │
+└──────────────────────────┘
 
-SECONDARY / NOT WIRED INTO MAIN PATH
-├─ src/args.rs
-└─ src/app.rs
+┌──────────────────────────┐
+│ SECONDARY / NOT WIRED    │
+├──────────────────────────┤
+│ ├─ src/args.rs           │
+│ └─ src/app.rs            │
+└──────────────────────────┘
 ```
 
 Đây là điểm phải ghi thật rõ cho người mới.

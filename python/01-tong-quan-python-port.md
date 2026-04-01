@@ -16,22 +16,32 @@ Nói ngắn gọn:
 - Rust mới là hướng runtime thực chiến.
 
 ```text
-Python port capability boundary
-├─ strongest today
-│  ├─ snapshots
-│  ├─ reports
-│  ├─ parity audit
-│  └─ inventory mirror
-├─ medium depth
-│  ├─ route_prompt()
-│  ├─ bootstrap simulation
-│  ├─ query engine
-│  └─ light session store
-└─ weak / placeholder
-   ├─ deep provider runtime
-   ├─ rich tool execution
-   ├─ production permission model
-   └─ full structured conversation runtime
+┌──────────────────────────────┐
+│ strongest today              │
+├──────────────────────────────┤
+│ ├─ snapshots                 │
+│ ├─ reports                   │
+│ ├─ parity audit              │
+│ └─ inventory mirror          │
+└──────────────┬───────────────┘
+               │
+┌──────────────▼───────────────┐
+│ medium depth                 │
+├──────────────────────────────┤
+│ ├─ route_prompt()            │
+│ ├─ bootstrap simulation      │
+│ ├─ query engine              │
+│ └─ light session store       │
+└──────────────┬───────────────┘
+               │
+┌──────────────▼───────────────┐
+│ weak / placeholder           │
+├──────────────────────────────┤
+│ ├─ deep provider runtime     │
+│ ├─ rich tool execution       │
+│ ├─ production permission     │
+│ └─ full conversation runtime │
+└──────────────────────────────┘
 ```
 
 ## 2. Python giải quyết vấn đề gì?
@@ -151,24 +161,20 @@ Một số phần rõ ràng là placeholder hoặc stub:
 ## 7. Sơ đồ định vị nhanh
 
 ```text
-CLI surface
-└─ main.py
-   ├─ mirror layer
-   │  ├─ commands.py
-   │  └─ tools.py
-   ├─ runtime layer
-   │  ├─ runtime.py
-   │  └─ query_engine.py
-   ├─ persistence layer
-   │  ├─ transcript.py
-   │  └─ session_store.py
-   ├─ audit layer
-   │  ├─ manifest
-   │  ├─ parity
-   │  └─ graphs
-   └─ reference data
-      ├─ snapshots
-      └─ subsystem metadata
+                   ┌────────────┐
+                   │  main.py   │
+                   └─────┬──────┘
+                         │
+      ┌──────────────────┼──────────────────┬──────────────────┐
+      │                  │                  │                  │
+      ▼                  ▼                  ▼                  ▼
+┌──────────────────┐┌──────────────────┐┌──────────────────┐┌──────────────────┐
+│ mirror layer     ││ runtime layer    ││ persistence      ││ audit/reference  │
+├──────────────────┤├──────────────────┤├──────────────────┤├──────────────────┤
+│ ├─ commands.py   ││ ├─ runtime.py    ││ ├─ transcript.py ││ ├─ manifest      │
+│ └─ tools.py      ││ └─ query_engine  ││ └─ session_store ││ ├─ parity/graphs │
+└──────────────────┘└──────────────────┘└──────────────────┘│ └─ snapshots/meta│
+                                                            └──────────────────┘
 ```
 
 Ảnh trên là bản đồ nhanh của toàn bộ Python port:

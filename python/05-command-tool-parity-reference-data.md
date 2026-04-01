@@ -29,18 +29,28 @@ Các file cốt lõi:
 Sơ đồ nguồn sự thật:
 
 ```text
-reference_data/
-├─ commands_snapshot.json
-├─ tools_snapshot.json
-├─ archive_surface_snapshot.json
-└─ subsystems/*.json
-   └─ consumed by
-      ├─ commands.py
-      ├─ tools.py
-      ├─ parity_audit.py
-      ├─ command_graph.py
-      └─ tool_pool.py
-         └─ inventory reports + parity reports + mirror lookup
+┌──────────────────────────────┐
+│ reference_data/             │
+├──────────────────────────────┤
+│ ├─ commands_snapshot.json   │
+│ ├─ tools_snapshot.json      │
+│ ├─ archive_surface_snapshot │
+│ └─ subsystems/*.json        │
+└──────────────┬───────────────┘
+               ▼
+┌──────────────────────────────┐
+│ consumers                    │
+├──────────────────────────────┤
+│ ├─ commands.py              │
+│ ├─ tools.py                 │
+│ ├─ parity_audit.py          │
+│ ├─ command_graph.py         │
+│ └─ tool_pool.py             │
+└──────────────┬───────────────┘
+               ▼
+┌──────────────────────────────┐
+│ inventory + parity outputs   │
+└──────────────────────────────┘
 ```
 
 Ảnh trên cho thấy đúng tinh thần của lớp Python này:

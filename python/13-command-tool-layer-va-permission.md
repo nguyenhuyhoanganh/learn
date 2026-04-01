@@ -15,27 +15,23 @@ Nếu không hiểu phần này, bạn sẽ không hiểu:
 - parity inventory đang mạnh ở đâu
 
 ```text
-commands.py
-└─ snapshot
-   └─ PortingModule
-      └─ lookup / render / shim
+┌──────────────────────┐  ┌──────────────────────┐  ┌──────────────────────┐
+│ commands.py          │  │ tools.py             │  │ permissions.py       │
+├──────────────────────┤  ├──────────────────────┤  ├──────────────────────┤
+│ snapshot             │  │ snapshot             │  │ lightweight gate     │
+│ └─ PortingModule     │  │ └─ PortingModule     │  │ ├─ deny by name      │
+│    └─ lookup/render  │  │    └─ filter         │  │ └─ deny by prefix    │
+│       / shim         │  │       ├─ simple_mode │  └──────────────────────┘
+└──────────────────────┘  │       ├─ include_mcp │
+                          │       └─ perm ctx    │
+                          └──────────────────────┘
 
-tools.py
-└─ snapshot
-   └─ PortingModule
-      └─ filter
-         ├─ simple_mode
-         ├─ include_mcp
-         └─ permission context
-
-permissions.py
-└─ lightweight gate
-   ├─ deny by name
-   └─ deny by prefix
-
-support analyzers
-├─ command_graph.py
-└─ tool_pool.py
+┌──────────────────────┐
+│ support analyzers    │
+├──────────────────────┤
+│ ├─ command_graph.py  │
+│ └─ tool_pool.py      │
+└──────────────────────┘
 ```
 
 ## 2. `commands.py`: lớp mirror command

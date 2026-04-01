@@ -11,20 +11,20 @@ Nó giúp người đọc chọn đúng nhánh tài liệu theo mục tiêu:
 - cần soi issue kỹ thuật
 
 ```text
-main.py
-├─ inventory mirror
-│  ├─ commands.py
-│  └─ tools.py
-├─ runtime simulation
-│  ├─ runtime.py
-│  └─ query_engine.py
-├─ persistence
-│  ├─ transcript.py
-│  └─ session_store.py
-└─ reports / parity / reference data
-   ├─ port_manifest.py
-   ├─ parity_audit.py
-   └─ reference_data/*.json
+                   ┌────────────┐
+                   │  main.py   │
+                   └─────┬──────┘
+                         │
+      ┌──────────────────┼──────────────────┬──────────────────┐
+      │                  │                  │                  │
+      ▼                  ▼                  ▼                  ▼
+┌──────────────────┐┌──────────────────┐┌──────────────────┐┌──────────────────────┐
+│ inventory mirror ││ runtime sim.     ││ persistence      ││ reports / reference  │
+├──────────────────┤├──────────────────┤├──────────────────┤├──────────────────────┤
+│ ├─ commands.py   ││ ├─ runtime.py    ││ ├─ transcript.py ││ ├─ port_manifest.py  │
+│ └─ tools.py      ││ └─ query_engine  ││ └─ session_store ││ ├─ parity_audit.py   │
+└──────────────────┘└──────────────────┘└──────────────────┘│ └─ reference_data/*  │
+                                                            └──────────────────────┘
 ```
 
 ## 2. Có 2 tầng tài liệu
@@ -56,28 +56,16 @@ main.py
 ## 3. Đọc theo nhu cầu
 
 ```text
-Path A: orientation
-├─ 01
-├─ 02
-├─ 03
-├─ 04
-├─ 05
-└─ 07
-
-Path B: edit runtime simulation
-├─ 03
-├─ 09
-├─ 10
-├─ 11
-├─ 12
-└─ 06
-
-Path C: parity / inventory work
-├─ 05
-├─ 13
-├─ 14
-├─ 06
-└─ 15
+┌────────────────────────────┐  ┌────────────────────────────┐  ┌────────────────────────────┐
+│ Path A: orientation        │  │ Path B: runtime simulation │  │ Path C: parity / inventory │
+├────────────────────────────┤  ├────────────────────────────┤  ├────────────────────────────┤
+│ ├─ 01                      │  │ ├─ 03                      │  │ ├─ 05                      │
+│ ├─ 02                      │  │ ├─ 09                      │  │ ├─ 13                      │
+│ ├─ 03                      │  │ ├─ 10                      │  │ ├─ 14                      │
+│ ├─ 04                      │  │ ├─ 11                      │  │ ├─ 06                      │
+│ ├─ 05                      │  │ ├─ 12                      │  │ └─ 15                      │
+│ └─ 07                      │  │ └─ 06                      │  └────────────────────────────┘
+└────────────────────────────┘  └────────────────────────────┘
 ```
 
 ### Nếu bạn là fresher mới vào

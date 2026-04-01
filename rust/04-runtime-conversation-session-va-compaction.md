@@ -37,22 +37,38 @@ Rust encode bài toán này thành một loop rõ ràng, không cần dựa vào
 ## 3. Luồng `run_turn()` từng bước
 
 ```text
-user text
-└─ push user message into Session
-   └─ build ApiRequest(system prompt + history)
-      └─ ApiClient.stream()
-         └─ AssistantEvent(s)
-            └─ assistant message + usage
-               ├─ no tool use
-               │  └─ finish turn
-               └─ tool use(s)
-                  └─ PermissionPolicy
-                     └─ pre-hook
-                        └─ ToolExecutor
-                           └─ post-hook
-                              └─ tool result
-                                 └─ push to Session
-                                    └─ loop again
+┌──────────────┐
+│  user text   │
+└──────┬───────┘
+       ▼
+┌──────────────────────────────┐
+│ push user message to Session │
+└──────┬───────────────────────┘
+       ▼
+┌──────────────────────────────┐
+│ ApiRequest(system + history) │
+└──────┬───────────────────────┘
+       ▼
+┌──────────────────────────────┐
+│ ApiClient.stream()           │
+└──────┬───────────────────────┘
+       ▼
+┌──────────────────────────────┐
+│ AssistantEvent(s)            │
+└──────┬───────────────────────┘
+       ▼
+┌──────────────────────────────┐
+│ assistant message + usage    │
+├──────────────────────────────┤
+│ ├─ no tool use -> finish     │
+│ └─ tool use(s)               │
+│    └─ PermissionPolicy       │
+│       └─ pre-hook            │
+│          └─ ToolExecutor     │
+│             └─ post-hook     │
+│                └─ tool result│
+│                   └─ loop    │
+└──────────────────────────────┘
 ```
 
 Luồng ở mức khái niệm:
@@ -163,19 +179,22 @@ Session đã đủ giàu để:
 ## 7. Compaction không phải chỉ là cắt bớt message
 
 ```text
-new turn data
-└─ Session(messages + blocks + usage)
-   ├─ UsageTracker
-   │  ├─ latest
-   │  ├─ cumulative
-   │  └─ cost estimate
-   └─ token estimate
-      ├─ small enough
-      │  └─ keep raw history
-      └─ too large
-         └─ compact old part
-            └─ continuation summary
-               └─ keep recent messages + continue
+┌──────────────────────────────┐
+│ new turn data                │
+└──────┬───────────────────────┘
+       ▼
+┌──────────────────────────────┐
+│ Session(messages/blocks/use) │
+├──────────────────────────────┤
+│ ├─ UsageTracker              │
+│ │  ├─ latest                 │
+│ │  ├─ cumulative             │
+│ │  └─ cost estimate          │
+│ └─ token estimate            │
+│    ├─ keep raw history       │
+│    └─ compact old part       │
+│       └─ continuation sum.   │
+└──────────────────────────────┘
 ```
 
 `runtime/src/compact.rs` làm nhiều hơn việc xóa lịch sử cũ.
