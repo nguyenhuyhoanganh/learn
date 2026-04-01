@@ -54,20 +54,13 @@ Tức là:
 
 ```text
 prompt
-  |
-  v
-route_prompt()
-  |
-  v
-ExecutionRegistry
-  |
-  v
-QueryEnginePort.submit_message()
-  |
-  +--> mutable_messages
-  +--> transcript entries
-  +--> usage totals
-  +--> persisted session JSON
+└─ route_prompt()
+   └─ ExecutionRegistry
+      └─ QueryEnginePort.submit_message()
+         ├─ mutable_messages
+         ├─ transcript entries
+         ├─ usage totals
+         └─ persisted session JSON
 ```
 
 Ảnh trên cho thấy data flow thật sự của Python port:

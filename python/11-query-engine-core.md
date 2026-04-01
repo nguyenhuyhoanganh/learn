@@ -72,17 +72,12 @@ Mental model tốt nhất:
 
 ```text
 user prompt
-  |
-  v
-submit_message()
-  |
-  +--> append to mutable_messages
-  +--> append to transcript
-  +--> update token counters
-  +--> decide stop_reason
-  |
-  v
-return TurnResult
+└─ submit_message()
+   ├─ append to mutable_messages
+   ├─ append to transcript
+   ├─ update token counters
+   ├─ decide stop_reason
+   └─ return TurnResult
 ```
 
 ## 3. `from_workspace()` và `from_saved_session()`

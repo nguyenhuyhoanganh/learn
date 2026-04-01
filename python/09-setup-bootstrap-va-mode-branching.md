@@ -17,29 +17,25 @@ File này zoom vào phần “khởi động hệ thống” trong Python port:
 
 ```text
 bootstrap path
-  CLI -> runtime.bootstrap_session()
-      -> context + setup
-      -> route_prompt()
-      -> registry shims
-      -> query engine
-      -> session report
+CLI
+└─ runtime.bootstrap_session()
+   ├─ context + setup
+   ├─ route_prompt()
+   ├─ registry shims
+   ├─ query engine
+   └─ session report
 ```
 
 ```text
 setup.py
-  |
-  +--> prefetch stubs
-  +--> project scan
-  +--> deferred init
-  |
-  v
-bootstrap_graph intent
-  |
-  v
-mode branching
-  +--> report path
-  +--> runtime simulation path
-  +--> audit path
+├─ prefetch stubs
+├─ project scan
+└─ deferred init
+   └─ bootstrap_graph intent
+      └─ mode branching
+         ├─ report path
+         ├─ runtime simulation path
+         └─ audit path
 ```
 
 ## 2. `setup.py` đang làm gì thật sự?

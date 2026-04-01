@@ -13,14 +13,19 @@ Nó phù hợp khi:
 ## 2. Bức tranh tổng quát
 
 ```text
-problem                -> solution style
----------------------------------------------------------------
-prompt entry           -> claw-cli + CliAction parser
-agent execution        -> ConversationRuntime
-model connection       -> api provider abstraction
-action layer           -> tools + commands + plugins
-context and controls   -> config + prompt + permission + sandbox
-integration surface    -> MCP + LSP + server + compat-harness
+problem → solution style
+├─ prompt entry
+│  └─ claw-cli + CliAction parser
+├─ agent execution
+│  └─ ConversationRuntime
+├─ model connection
+│  └─ api provider abstraction
+├─ action layer
+│  └─ tools + commands + plugins
+├─ context and controls
+│  └─ config + prompt + permission + sandbox
+└─ integration surface
+   └─ MCP + LSP + server + compat-harness
 ```
 
 Rust workspace đang giải một bài toán lớn:

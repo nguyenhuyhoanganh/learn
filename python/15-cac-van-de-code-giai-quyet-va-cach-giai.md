@@ -18,13 +18,17 @@ File này đi theo hướng khác:
 - người chuẩn bị port tiếp muốn biết đâu là chiến lược hiện tại
 
 ```text
-problem                -> solution style in Python port
----------------------------------------------------------------
-inventory visibility   -> snapshots + cached metadata loaders
-routing simulation     -> simple matching + registry bridge
-state demonstration    -> QueryEnginePort + transcript/session store
-parity measurement     -> reference data + audit reports
-deep runtime execution -> mostly not solved here; simulated lightly
+problem → solution style in Python port
+├─ inventory visibility
+│  └─ snapshots + cached metadata loaders
+├─ routing simulation
+│  └─ simple matching + registry bridge
+├─ state demonstration
+│  └─ QueryEnginePort + transcript/session store
+├─ parity measurement
+│  └─ reference data + audit reports
+└─ deep runtime execution
+   └─ mostly not solved here; simulated lightly
 ```
 
 ## 2. Kết luận ngắn nhất trước khi đi vào chi tiết

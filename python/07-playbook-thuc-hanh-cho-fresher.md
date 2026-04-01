@@ -14,13 +14,14 @@ Nếu là người mới, hãy đọc theo thứ tự:
 5. file playbook này
 
 ```text
-Step 1 -> read overview
-Step 2 -> map modules
-Step 3 -> trace CLI flow
-Step 4 -> trace query engine state
-Step 5 -> read parity + gaps
-Step 6 -> self-check:
-          can you explain mirror vs simulation vs real mutation?
+Fresher loop
+├─ Step 1: read overview
+├─ Step 2: map modules
+├─ Step 3: trace CLI flow
+├─ Step 4: trace query engine state
+├─ Step 5: read parity + gaps
+└─ Step 6: self-check
+   └─ can you explain mirror vs simulation vs real mutation?
 ```
 
 ## 2. Bản đồ học nhanh trong 60-90 phút

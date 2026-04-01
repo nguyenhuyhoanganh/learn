@@ -30,17 +30,17 @@ Sơ đồ nguồn sự thật:
 
 ```text
 reference_data/
-  |
-  +--> commands_snapshot.json
-  +--> tools_snapshot.json
-  +--> archive_surface_snapshot.json
-  +--> subsystems/*.json
-          |
-          v
-commands.py / tools.py / parity_audit.py / command_graph.py / tool_pool.py
-          |
-          v
-inventory reports + parity reports + mirror lookup
+├─ commands_snapshot.json
+├─ tools_snapshot.json
+├─ archive_surface_snapshot.json
+└─ subsystems/*.json
+   └─ consumed by
+      ├─ commands.py
+      ├─ tools.py
+      ├─ parity_audit.py
+      ├─ command_graph.py
+      └─ tool_pool.py
+         └─ inventory reports + parity reports + mirror lookup
 ```
 
 Ảnh trên cho thấy đúng tinh thần của lớp Python này:

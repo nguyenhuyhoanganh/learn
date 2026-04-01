@@ -38,40 +38,21 @@ Rust encode bài toán này thành một loop rõ ràng, không cần dựa vào
 
 ```text
 user text
-  |
-  v
-Session <- push user message
-  |
-  v
-ApiRequest(system_prompt + history)
-  |
-  v
-ApiClient.stream()
-  |
-  v
-AssistantEvent(s)
-  |
-  v
-assistant message + usage
-  |
-  +--> no tool use ----> finish turn
-  |
-  +--> tool use(s)
-         |
-         v
-    PermissionPolicy
-         |
-         v
-      pre-hook
-         |
-         v
-    ToolExecutor
-         |
-         v
-      post-hook
-         |
-         v
-    tool result -> push to Session -> loop again
+└─ push user message into Session
+   └─ build ApiRequest(system prompt + history)
+      └─ ApiClient.stream()
+         └─ AssistantEvent(s)
+            └─ assistant message + usage
+               ├─ no tool use
+               │  └─ finish turn
+               └─ tool use(s)
+                  └─ PermissionPolicy
+                     └─ pre-hook
+                        └─ ToolExecutor
+                           └─ post-hook
+                              └─ tool result
+                                 └─ push to Session
+                                    └─ loop again
 ```
 
 Luồng ở mức khái niệm:
@@ -183,23 +164,18 @@ Session đã đủ giàu để:
 
 ```text
 new turn data
-   |
-   v
-Session(messages + blocks + usage)
-   |
-   +--> UsageTracker(latest + cumulative + cost)
-   |
-   +--> token estimate
-          |
-          +--> small enough ------> keep raw history
-          |
-          +--> too large ---------> compact old part
-                                      |
-                                      v
-                                continuation summary
-                                      |
-                                      v
-                                keep recent messages + continue
+└─ Session(messages + blocks + usage)
+   ├─ UsageTracker
+   │  ├─ latest
+   │  ├─ cumulative
+   │  └─ cost estimate
+   └─ token estimate
+      ├─ small enough
+      │  └─ keep raw history
+      └─ too large
+         └─ compact old part
+            └─ continuation summary
+               └─ keep recent messages + continue
 ```
 
 `runtime/src/compact.rs` làm nhiều hơn việc xóa lịch sử cũ.

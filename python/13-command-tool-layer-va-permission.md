@@ -16,17 +16,26 @@ Nếu không hiểu phần này, bạn sẽ không hiểu:
 
 ```text
 commands.py
-  snapshot -> PortingModule -> lookup / render / shim
+└─ snapshot
+   └─ PortingModule
+      └─ lookup / render / shim
 
 tools.py
-  snapshot -> PortingModule -> filter(simple_mode, include_mcp, permission context)
+└─ snapshot
+   └─ PortingModule
+      └─ filter
+         ├─ simple_mode
+         ├─ include_mcp
+         └─ permission context
 
 permissions.py
-  lightweight deny-by-name / deny-by-prefix gate
+└─ lightweight gate
+   ├─ deny by name
+   └─ deny by prefix
 
 support analyzers
-  command_graph.py
-  tool_pool.py
+├─ command_graph.py
+└─ tool_pool.py
 ```
 
 ## 2. `commands.py`: lớp mirror command

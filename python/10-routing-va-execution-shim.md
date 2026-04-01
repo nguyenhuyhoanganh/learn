@@ -10,23 +10,21 @@ File này chỉ tập trung vào hai câu hỏi:
 Đây là chỗ rất dễ bị hiểu sai khi mới đọc repo.
 
 ```text
-prompt -> route_prompt() -> matches -> ExecutionRegistry -> QueryEnginePort -> output
+prompt
+└─ route_prompt()
+   └─ matches
+      └─ ExecutionRegistry
+         └─ QueryEnginePort
+            └─ output
 ```
 
 ```text
 token overlap / simple scoring
-   |
-   v
-matched commands + tools
-   |
-   v
-MirroredCommand / MirroredTool
-   |
-   v
-execute_command() / execute_tool()
-   |
-   v
-shim message, not deep production business logic
+└─ matched commands + tools
+   └─ MirroredCommand / MirroredTool
+      └─ execute_command() / execute_tool()
+         └─ shim message
+            └─ not deep production business logic
 ```
 
 ## 2. `route_prompt()` trong `runtime.py`

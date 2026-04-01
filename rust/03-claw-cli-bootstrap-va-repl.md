@@ -115,20 +115,21 @@ Mode này:
 
 ```text
 args
-  |
-  v
-parse_args()
-  |
-  v
-CliAction
-  +--> Prompt ----+
-  +--> Repl ------+--> load config -> load system prompt
-  +--> Resume ----+                    -> load plugins/tools
-  +--> Login ------------------------> OAuth loopback flow
-  +--> Utility ----------------------> manifests / version / agents / skills
-                                       |
-                                       v
-                                     LiveCli
+└─ parse_args()
+   └─ CliAction
+      ├─ Prompt
+      │  └─ load config
+      │     ├─ load system prompt
+      │     ├─ load plugins / tools
+      │     └─ LiveCli
+      ├─ Repl
+      │  └─ same bootstrap + interactive loop
+      ├─ Resume
+      │  └─ load session + resume-safe commands
+      ├─ Login
+      │  └─ OAuth loopback flow
+      └─ Utility
+         └─ manifests / version / agents / skills
 ```
 
 Luồng khái niệm:
@@ -200,11 +201,16 @@ Logout thì đơn giản hơn:
 
 ```text
 ACTIVE PATH
-  Cargo binary -> src/main.rs -> run() -> parse_args() -> CliAction -> LiveCli
+└─ Cargo binary
+   └─ src/main.rs
+      └─ run()
+         └─ parse_args()
+            └─ CliAction
+               └─ LiveCli
 
 SECONDARY / NOT WIRED INTO MAIN PATH
-  src/args.rs
-  src/app.rs
+├─ src/args.rs
+└─ src/app.rs
 ```
 
 Đây là điểm phải ghi thật rõ cho người mới.

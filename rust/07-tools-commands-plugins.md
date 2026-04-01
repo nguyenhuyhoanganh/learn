@@ -11,22 +11,18 @@ Nếu `runtime` là tim và `api` là miệng tai kết nối với model, thì:
 Ba crate này giải bài toán: làm sao để agent không chỉ trả lời, mà còn có thể hành động theo cách có tổ chức.
 
 ```text
-model sees:
-  ToolDefinition list
-       |
-       v
-GlobalToolRegistry
-  +--> built-in tools
-  +--> plugin tools
-       |
-       v
-PermissionPolicy
-       |
-       v
-runtime executes tool
+model sees
+└─ ToolDefinition list
+   └─ GlobalToolRegistry
+      ├─ built-in tools
+      └─ plugin tools
+         └─ PermissionPolicy
+            └─ runtime executes tool
 
-parallel user workflow layer:
-  slash command -> commands crate -> git/plugin/agent/skill UX
+parallel user workflow layer
+└─ slash command
+   └─ commands crate
+      └─ git / plugin / agent / skill UX
 ```
 
 ## 2. Crate `tools` làm gì
@@ -191,18 +187,12 @@ Nhưng source trong `plugins` cho thấy ngược lại.
 
 ```text
 plugin source
-   |
-   v
-manifest validation
-   |
-   v
-install registry + enabled state
-   |
-   v
-PluginRegistry
-   +--> aggregated hooks
-   +--> plugin tools
-   +--> lifecycle init/shutdown
+└─ manifest validation
+   └─ install registry + enabled state
+      └─ PluginRegistry
+         ├─ aggregated hooks
+         ├─ plugin tools
+         └─ lifecycle init / shutdown
 ```
 
 Plugin manifest mô tả:

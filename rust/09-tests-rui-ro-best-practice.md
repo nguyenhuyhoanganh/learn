@@ -12,13 +12,21 @@ File này trả lời 3 câu hỏi thực dụng:
 
 ```text
 visible test clusters
-  [runtime] [tools] [plugins] [commands] [lsp]
+├─ runtime
+├─ tools
+├─ plugins
+├─ commands
+└─ lsp
 
 main risk clusters
-  1. active path drift: main.rs vs args.rs/app.rs
-  2. doc drift: README vs source
-  3. MCP drift: config breadth > execution depth
-  4. local env gap: no cargo verification on this machine
+├─ active path drift
+│  └─ main.rs vs args.rs / app.rs
+├─ doc drift
+│  └─ README vs source
+├─ MCP drift
+│  └─ config breadth > execution depth
+└─ local env gap
+   └─ no cargo verification on this machine
 ```
 
 Qua source hiện tại có thể thấy test xuất hiện ở nhiều crate quan trọng:

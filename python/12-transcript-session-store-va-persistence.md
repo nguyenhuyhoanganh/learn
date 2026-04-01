@@ -14,19 +14,19 @@ File này tách riêng chủ đề đó để tránh hiểu sai.
 
 ```text
 TranscriptStore
-  append / compact / replay / flush
-        |
-        v
-in-memory entries only
+├─ append()
+├─ compact()
+├─ replay()
+└─ flush()
+   └─ in-memory entries only
 
 SessionStore
-  save_session / load_session
-        |
-        v
-.port_sessions/*.json
+├─ save_session()
+└─ load_session()
+   └─ .port_sessions/*.json
 
-note:
-  transcript buffer != persisted session payload
+note
+└─ transcript buffer != persisted session payload
 ```
 
 ## 2. `TranscriptStore` trong `transcript.py`

@@ -22,17 +22,28 @@ Nó giải đồng thời nhiều bài toán:
 Nếu Python port là lớp học kiến trúc và mirror surface, thì Rust là nơi năng lực runtime bắt đầu thành hình thật.
 
 ```text
-+----------------+  +----------------+  +----------------+
-|  Interaction   |  | Agent runtime  |  |    Context     |
-| CLI / REPL /   |  | tool loop /    |  | CLAW.md / git /|
-| slash command  |  | session / cost |  | config / LSP   |
-+----------------+  +----------------+  +----------------+
-
-+----------------+  +----------------+
-| Control/safety |  |  Integration   |
-| permission /   |  | providers /    |
-| sandbox / hook |  | MCP / plugins  |
-+----------------+  +----------------+
+problem domains
+├─ interaction
+│  ├─ CLI
+│  ├─ REPL
+│  └─ slash command
+├─ agent runtime
+│  ├─ tool loop
+│  ├─ session
+│  └─ cost tracking
+├─ context
+│  ├─ CLAW.md
+│  ├─ git
+│  ├─ config
+│  └─ LSP
+├─ control / safety
+│  ├─ permission
+│  ├─ sandbox
+│  └─ hooks
+└─ integration
+   ├─ providers
+   ├─ MCP
+   └─ plugins
 ```
 
 ## 2. Bài toán mà code đang giải

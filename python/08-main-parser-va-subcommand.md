@@ -21,18 +21,23 @@ Kết luận rất nhanh sau khi đọc file này:
 
 ```text
 main.py parser
-  |
-  +--> inventory/report commands
-  |      summary / manifest / commands / tools / graphs / parity
-  |
-  +--> runtime simulation commands
-  |      route / bootstrap / turn-loop
-  |
-  +--> session commands
-  |      flush-transcript / load-session
-  |
-  +--> mode-branching commands
-         remote-mode / ssh-mode / teleport-mode / ...
+├─ inventory/report commands
+│  ├─ summary
+│  ├─ manifest
+│  ├─ commands / tools
+│  └─ graphs / parity
+├─ runtime simulation commands
+│  ├─ route
+│  ├─ bootstrap
+│  └─ turn-loop
+├─ session commands
+│  ├─ flush-transcript
+│  └─ load-session
+└─ mode-branching commands
+   ├─ remote-mode
+   ├─ ssh-mode
+   ├─ teleport-mode
+   └─ ...
 ```
 
 ## 2. `build_parser()` đang kể câu chuyện gì?

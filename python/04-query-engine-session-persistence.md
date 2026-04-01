@@ -263,19 +263,15 @@ Vì thế:
 
 ```text
 new engine
-   |
-   v
-ready state (session_id + mutable_messages + usage)
-   |
-   v
-submit_message()
-   |
-   +--> completed
-   +--> max_budget_reached
-   +--> max_turns_reached
-   |
-   v
-flush_transcript() + save_session()
+└─ ready state
+   ├─ session_id
+   ├─ mutable_messages
+   └─ usage
+      └─ submit_message()
+         ├─ completed
+         ├─ max_budget_reached
+         ├─ max_turns_reached
+         └─ flush_transcript() + save_session()
 ```
 
 Ảnh trên giúp phân biệt rõ:

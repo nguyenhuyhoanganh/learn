@@ -12,23 +12,19 @@ Nó giúp người đọc chọn đúng nhánh tài liệu theo mục tiêu:
 
 ```text
 main.py
-  |
-  +--> inventory mirror
-  |      |- commands.py
-  |      |- tools.py
-  |
-  +--> runtime simulation
-  |      |- runtime.py
-  |      |- query_engine.py
-  |
-  +--> persistence
-  |      |- transcript.py
-  |      |- session_store.py
-  |
-  +--> reports / parity / reference data
-         |- port_manifest.py
-         |- parity_audit.py
-         |- reference_data/*.json
+├─ inventory mirror
+│  ├─ commands.py
+│  └─ tools.py
+├─ runtime simulation
+│  ├─ runtime.py
+│  └─ query_engine.py
+├─ persistence
+│  ├─ transcript.py
+│  └─ session_store.py
+└─ reports / parity / reference data
+   ├─ port_manifest.py
+   ├─ parity_audit.py
+   └─ reference_data/*.json
 ```
 
 ## 2. Có 2 tầng tài liệu
@@ -61,13 +57,27 @@ main.py
 
 ```text
 Path A: orientation
-  01 -> 02 -> 03 -> 04 -> 05 -> 07
+├─ 01
+├─ 02
+├─ 03
+├─ 04
+├─ 05
+└─ 07
 
 Path B: edit runtime simulation
-  03 -> 09 -> 10 -> 11 -> 12 -> 06
+├─ 03
+├─ 09
+├─ 10
+├─ 11
+├─ 12
+└─ 06
 
 Path C: parity / inventory work
-  05 -> 13 -> 14 -> 06 -> 15
+├─ 05
+├─ 13
+├─ 14
+├─ 06
+└─ 15
 ```
 
 ### Nếu bạn là fresher mới vào

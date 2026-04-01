@@ -106,16 +106,13 @@ Python tạo một `RuntimeSession` và in ra report hoàn chỉnh.
 
 ```text
 CLI command
-   |
-   v
-PortRuntime.bootstrap_session()
-   |
-   +--> build_port_context()
-   +--> run_setup(trusted=True)
-   +--> route_prompt()
-   +--> registry shims
-   +--> QueryEnginePort
-   +--> persist session + render report
+└─ PortRuntime.bootstrap_session()
+   ├─ build_port_context()
+   ├─ run_setup(trusted=True)
+   ├─ route_prompt()
+   ├─ registry shims
+   ├─ QueryEnginePort
+   └─ persist session + render report
 ```
 
 Ảnh trên bám sát flow hiện tại của `bootstrap_session()`.

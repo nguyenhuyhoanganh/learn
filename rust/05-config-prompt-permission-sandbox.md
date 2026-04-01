@@ -16,27 +16,19 @@ Nếu 4 lớp này không hiểu rõ, bạn sẽ sửa feature trong khi không 
 
 ```text
 config files
-  |
-  v
-ConfigLoader merge
-  |
-  +--> typed RuntimeConfig
-  |      |
-  |      +--> model / oauth / plugins / hooks / mcp / sandbox
-  |
-  +--> ProjectContext + instruction files + git state
-         |
-         v
-   SystemPromptBuilder
-         |
-         v
-   Permission gate
-         |
-         v
-   Sandbox capability check
-         |
-         v
-   final runtime behavior before tool execution
+└─ ConfigLoader merge
+   ├─ typed RuntimeConfig
+   │  ├─ model
+   │  ├─ oauth
+   │  ├─ plugins
+   │  ├─ hooks
+   │  ├─ mcp
+   │  └─ sandbox
+   └─ ProjectContext + instruction files + git state
+      └─ SystemPromptBuilder
+         └─ Permission gate
+            └─ Sandbox capability check
+               └─ final runtime behavior before tool execution
 ```
 
 ## 2. Config được nạp từ đâu

@@ -17,25 +17,15 @@ Nó phải giải đồng thời 4 việc:
 
 ```text
 credentials / env / saved OAuth
-           |
-           v
-     provider resolution
-   (Claw / OpenAI / xAI)
-           |
-           v
-   canonical request types
-           |
-           v
-   vendor-specific translation
-           |
-           v
-   SSE / streaming / retry / backoff
-           |
-           v
-   normalized StreamEvent
-           |
-           v
-         runtime
+└─ provider resolution
+   ├─ Claw
+   ├─ OpenAI
+   └─ xAI
+      └─ canonical request types
+         └─ vendor-specific translation
+            └─ SSE / streaming / retry / backoff
+               └─ normalized StreamEvent
+                  └─ runtime
 ```
 
 Các trục chính:
