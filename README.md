@@ -1,14 +1,21 @@
 # Wiki Dự Án Claw-Code
 
-Bộ tài liệu này đang được viết theo từng pha.
+Bộ tài liệu này được tách thành 2 nhánh lớn:
 
-Pha hiện tại tập trung vào phần Python trong `claw-code/src/`.
-Đây là lớp `porting workspace` dùng để mirror bề mặt dự án gốc, kiểm kê command/tool, mô phỏng một số flow bootstrap/runtime, chạy parity audit, và tạo báo cáo học kiến trúc.
-Nó không phải runtime agent production đầy đủ như phần Rust.
+- `python/`: tài liệu cho Python port, thiên về mirror surface, mô phỏng runtime, parity audit và onboarding kiến trúc
+- `rust/`: tài liệu cho Rust workspace, thiên về runtime thực thi, tool/plugin/provider/session/prompt/integration thực tế
 
-## Mục lục hiện có
+## Cách đọc nhanh
 
-### Tầng 1: Overview
+Nếu bạn là fresher mới vào dự án:
+
+1. đọc `python/00-lo-trinh-doc-python.md` để hiểu vì sao Python tồn tại
+2. đọc `rust/00-lo-trinh-doc-rust.md` để hiểu vì sao Rust mới là runtime quan trọng
+3. sau đó chọn một nhánh chính để đào sâu
+
+## Phần Python
+
+### Overview
 
 - `python/00-lo-trinh-doc-python.md`
 - `python/01-tong-quan-python-port.md`
@@ -19,7 +26,7 @@ Nó không phải runtime agent production đầy đủ như phần Rust.
 - `python/06-tests-khoang-trong-best-practice.md`
 - `python/07-playbook-thuc-hanh-cho-fresher.md`
 
-### Tầng 2: Deep Dive
+### Deep Dive
 
 - `python/08-main-parser-va-subcommand.md`
 - `python/09-setup-bootstrap-va-mode-branching.md`
@@ -28,8 +35,9 @@ Nó không phải runtime agent production đầy đủ như phần Rust.
 - `python/12-transcript-session-store-va-persistence.md`
 - `python/13-command-tool-layer-va-permission.md`
 - `python/14-reference-data-subsystem-va-parity.md`
+- `python/15-cac-van-de-code-giai-quyet-va-cach-giai.md`
 
-### Ảnh minh hoạ
+### Ảnh minh họa
 
 - `python/assets/python-module-map.png`
 - `python/assets/python-runtime-dataflow.png`
@@ -37,24 +45,69 @@ Nó không phải runtime agent production đầy đủ như phần Rust.
 - `python/assets/python-session-lifecycle.png`
 - `python/assets/python-snapshot-parity-map.png`
 
-Script dựng lại ảnh:
+### Script dựng ảnh
 
 - `python/_scripts/render_diagrams.ps1`
 
-## Cách đọc đề xuất cho fresher
+## Phần Rust
 
-1. Đọc `00-lo-trinh-doc-python.md` để chọn đúng nhánh đọc.
-2. Đọc `01-tong-quan-python-port.md` để hiểu Python đang giải quyết bài toán gì.
-3. Đọc `02-kien-truc-thanh-phan.md` để nắm bản đồ module.
-4. Đọc `03-cli-bootstrap-routing.md` để thấy flow chạy từ CLI.
-5. Đọc `04-query-engine-session-persistence.md` để hiểu state, session, transcript.
-6. Đọc `05-command-tool-parity-reference-data.md` để hiểu snapshot mirror và placeholder subsystem.
-7. Đọc `06-tests-khoang-trong-best-practice.md` để biết giới hạn, issue và cách làm việc an toàn.
-8. Đọc `07-playbook-thuc-hanh-cho-fresher.md` để tự thực hành và tự kiểm tra mức hiểu.
-9. Khi cần đào sâu, đi tiếp các file `08` đến `14` theo đúng chuyên đề.
+### Overview
+
+- `rust/00-lo-trinh-doc-rust.md`
+- `rust/01-tong-quan-rust-workspace.md`
+- `rust/02-ban-do-workspace-va-crates.md`
+- `rust/03-claw-cli-bootstrap-va-repl.md`
+- `rust/04-runtime-conversation-session-va-compaction.md`
+- `rust/05-config-prompt-permission-sandbox.md`
+- `rust/06-api-provider-oauth-streaming.md`
+- `rust/07-tools-commands-plugins.md`
+- `rust/08-mcp-server-lsp-va-service-surface.md`
+- `rust/09-tests-rui-ro-best-practice.md`
+- `rust/10-cac-van-de-rust-giai-quyet-va-cach-giai.md`
+
+### Ảnh minh họa
+
+- `rust/assets/rust-workspace-map.png`
+- `rust/assets/rust-cli-bootstrap-map.png`
+- `rust/assets/rust-conversation-runtime-flow.png`
+- `rust/assets/rust-provider-tool-plugin-stack.png`
+- `rust/assets/rust-service-surface.png`
+
+### Script dựng ảnh
+
+- `rust/_scripts/render_diagrams.ps1`
+
+## Gợi ý lộ trình cho fresher
+
+### Nếu muốn hiểu toàn cảnh dự án
+
+1. `python/01-tong-quan-python-port.md`
+2. `rust/01-tong-quan-rust-workspace.md`
+3. `python/02-kien-truc-thanh-phan.md`
+4. `rust/02-ban-do-workspace-va-crates.md`
+5. `rust/10-cac-van-de-rust-giai-quyet-va-cach-giai.md`
+
+### Nếu muốn hiểu runtime chạy thật
+
+1. `rust/03-claw-cli-bootstrap-va-repl.md`
+2. `rust/04-runtime-conversation-session-va-compaction.md`
+3. `rust/05-config-prompt-permission-sandbox.md`
+4. `rust/06-api-provider-oauth-streaming.md`
+5. `rust/07-tools-commands-plugins.md`
+6. `rust/08-mcp-server-lsp-va-service-surface.md`
+
+### Nếu muốn hiểu Python đang đóng vai trò gì
+
+1. `python/03-cli-bootstrap-routing.md`
+2. `python/04-query-engine-session-persistence.md`
+3. `python/05-command-tool-parity-reference-data.md`
+4. `python/15-cac-van-de-code-giai-quyet-va-cach-giai.md`
 
 ## Ghi chú quan trọng
 
-- Tài liệu này phản ánh code đang có trong workspace tại thời điểm đọc.
-- Phần Rust được tạm dừng theo yêu cầu để ưu tiên tài liệu Python trước.
-- Các sơ đồ Mermaid đã được thay bằng ảnh PNG thật để đọc ổn định hơn trong markdown viewer.
+- Tài liệu phản ánh code đang có trong workspace tại thời điểm đọc.
+- Python và Rust không ở cùng mức độ hoàn thiện.
+- Python phù hợp để hiểu bề mặt và intent kiến trúc.
+- Rust phù hợp để hiểu runtime agent thực sự đang được xây như thế nào.
+- Các sơ đồ Mermaid đã được thay bằng ảnh PNG thật để markdown viewer hiển thị ổn định hơn.
+- Riêng phần Rust trong vòng tài liệu hiện tại được xác nhận bằng static code reading; môi trường local hiện không có `cargo` trong `PATH`, nên chưa chạy build/test lại trực tiếp từ máy này.
