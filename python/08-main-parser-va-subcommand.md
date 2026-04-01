@@ -19,6 +19,8 @@ Kết luận rất nhanh sau khi đọc file này:
 - Python layer thiên mạnh về `report + mirror + simulation`
 - chưa phải executor nghiệp vụ production
 
+![Bản đồ parser và subcommand của main.py](assets/python-cli-parser-map.png)
+
 ## 2. `build_parser()` đang kể câu chuyện gì?
 
 `build_parser()` dùng `argparse` để khai báo hàng loạt subcommand.

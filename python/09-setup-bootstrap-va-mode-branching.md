@@ -17,6 +17,8 @@ File này zoom vào phần “khởi động hệ thống” trong Python port:
 
 ![Sơ đồ bootstrap session](assets/python-bootstrap-sequence.png)
 
+![Sơ đồ setup và mode branching](assets/python-setup-mode-branching.png)
+
 ## 2. `setup.py` đang làm gì thật sự?
 
 `run_setup()` tạo ra `SetupReport`.

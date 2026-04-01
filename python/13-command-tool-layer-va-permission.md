@@ -14,6 +14,8 @@ Nếu không hiểu phần này, bạn sẽ không hiểu:
 - execution shim đang đại diện cho cái gì
 - parity inventory đang mạnh ở đâu
 
+![Bản đồ command, tool và permission filtering](assets/python-command-tool-permission-map.png)
+
 ## 2. `commands.py`: lớp mirror command
 
 ### 2.1. `load_command_snapshot()`

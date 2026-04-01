@@ -30,6 +30,8 @@ Cách đọc đúng là:
 
 ## 3. Có 3 nhánh đọc chính
 
+![Lộ trình đọc Rust wiki](assets/rust-reading-paths.png)
+
 ### Nhánh A: đọc nhanh để nắm toàn cảnh
 
 Đọc theo thứ tự:

@@ -145,6 +145,8 @@ Session đã đủ giàu để:
 
 ## 7. Compaction không phải chỉ là cắt bớt message
 
+![Chu kỳ session và compaction](assets/rust-session-compaction-cycle.png)
+
 `runtime/src/compact.rs` làm nhiều hơn việc xóa lịch sử cũ.
 
 Nó:

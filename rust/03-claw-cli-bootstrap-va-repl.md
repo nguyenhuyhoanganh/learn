@@ -182,6 +182,8 @@ Logout thì đơn giản hơn:
 
 ## 9. `args.rs` và `app.rs` nên hiểu ra sao
 
+![Đường chạy CLI thật và các nhánh phụ](assets/rust-cli-active-path.png)
+
 Đây là điểm phải ghi thật rõ cho người mới.
 
 ### `args.rs`

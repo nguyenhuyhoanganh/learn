@@ -13,6 +13,8 @@ Nếu là người mới, hãy đọc theo thứ tự:
 4. `03-cli-bootstrap-routing.md`
 5. file playbook này
 
+![Playbook fresher cho Python port](assets/python-fresher-playbook.png)
+
 ## 2. Bản đồ học nhanh trong 60-90 phút
 
 ### Bước 1. Nhìn toàn cảnh

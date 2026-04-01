@@ -202,6 +202,160 @@ Draw-Arrow $g 1370 555 1430 555 "#2C5F75"
 Draw-Note $g 110 790 1570 140 "The architecture already knows many integration modes. But the most mature operational paths visible in source are: stdio-based MCP, prompt-bound LSP enrichment, and a small but real HTTP/SSE session server."
 Save-Canvas $canvas "rust-service-surface.png"
 
+# Diagram 6: reading paths
+$canvas = New-Canvas "Rust Wiki Reading Paths" "Three recommended routes for fresher, runtime work, and ecosystem extension."
+$g = $canvas.Graphics
+Draw-Box $g 110 210 470 520 "#D8E5F2" "Path A: read for orientation" @("01 overview", "02 workspace map", "03 CLI bootstrap", "04 runtime loop", "07 tools/commands/plugins", "10 problems and solutions")
+Draw-Box $g 660 210 470 520 "#DDEFD9" "Path B: read before changing runtime" @("03 CLI bootstrap", "04 conversation/session", "05 config/prompt/permission", "06 API/provider/OAuth", "08 MCP/LSP/service surface", "09 tests and risks")
+Draw-Box $g 1210 210 470 520 "#F7E0C5" "Path C: read before extending the platform" @("07 tools/commands/plugins", "08 MCP/LSP/service surface", "06 API/provider", "09 tests/risk", "focus on extension safety", "and integration boundaries")
+Draw-Note $g 110 800 1570 130 "Use Path A in the first days, Path B before editing runtime behavior, and Path C before adding integrations, tools, or plugins."
+Save-Canvas $canvas "rust-reading-paths.png"
+
+# Diagram 7: problem domains
+$canvas = New-Canvas "Rust Problem Domains" "The workspace solves multiple categories of problems, not just model calls."
+$g = $canvas.Graphics
+Draw-Box $g 110 180 270 170 "#D8E5F2" "Interaction" @("CLI", "REPL", "slash commands", "session UX")
+Draw-Box $g 450 180 270 170 "#DDEFD9" "Agent runtime" @("conversation loop", "tool iterations", "hooks", "usage and compaction")
+Draw-Box $g 790 180 270 170 "#F7E0C5" "Context" @("project instructions", "git state", "config merge", "LSP enrichment")
+Draw-Box $g 1130 180 270 170 "#E6DCF2" "Control and safety" @("permission mode", "allowed tools", "sandbox", "policy hooks")
+Draw-Box $g 1470 180 220 170 "#F3D8D8" "Integration" @("providers", "MCP", "plugins", "server API")
+Draw-Box $g 470 500 420 180 "#FFF0CF" "Why this matters" @("Rust is not only a port of syntax.", "It is building a real agent platform", "with environment awareness, tool execution,", "state management, and extension surfaces.")
+Draw-Arrow $g 245 350 680 500 "#2C5F75"
+Draw-Arrow $g 585 350 680 500 "#2C5F75"
+Draw-Arrow $g 925 350 680 500 "#2C5F75"
+Draw-Arrow $g 1265 350 680 500 "#2C5F75"
+Draw-Arrow $g 1580 350 680 500 "#2C5F75"
+Save-Canvas $canvas "rust-problem-domains.png"
+
+# Diagram 8: crate rings
+$canvas = New-Canvas "Crate Rings" "A practical way to remember workspace layering from center to edge."
+$g = $canvas.Graphics
+Draw-Box $g 160 210 280 180 "#D8E5F2" "Ring 1" @("claw-cli", "entry and orchestration")
+Draw-Box $g 520 210 280 180 "#DDEFD9" "Ring 2" @("runtime", "api", "core execution")
+Draw-Box $g 880 210 280 180 "#F7E0C5" "Ring 3" @("tools", "commands", "plugins", "lsp", "mcp")
+Draw-Box $g 1240 210 320 180 "#E6DCF2" "Ring 4" @("server", "compat-harness", "service and governance edges")
+Draw-Box $g 360 540 1040 180 "#FFF0CF" "How to use this model" @("Entry problems usually start in ring 1.", "Agent behavior problems usually live in ring 2.", "Capability and integration problems often live in ring 3.", "Service or parity support concerns usually live in ring 4.")
+Draw-Arrow $g 440 300 520 300 "#2C5F75"
+Draw-Arrow $g 800 300 880 300 "#2C5F75"
+Draw-Arrow $g 1160 300 1240 300 "#2C5F75"
+Save-Canvas $canvas "rust-crate-rings.png"
+
+# Diagram 9: active cli path
+$canvas = New-Canvas "Active Versus Secondary CLI Paths" "Which files are on the real binary path today and which ones are likely stale or alternate."
+$g = $canvas.Graphics
+Draw-Box $g 120 190 420 210 "#DDEFD9" "Active path" @("Cargo binary entry -> src/main.rs", "main.rs declares: init, input, render", "parse_args() in main.rs", "run() matches CliAction", "LiveCli starts real runtime flows")
+Draw-Box $g 660 190 420 210 "#F7E0C5" "Secondary file: args.rs" @("contains clap-based parser", "smaller surface than main.rs", "not imported by main.rs", "not on current execution path")
+Draw-Box $g 1200 190 420 210 "#F3D8D8" "Secondary file: app.rs" @("contains alternate app abstraction", "not imported by main.rs", "useful for history or intent", "not the current binary path")
+Draw-Box $g 420 520 920 170 "#FFF0CF" "Reading rule" @("When debugging or editing CLI behavior, start from main.rs first. Only read args.rs and app.rs after confirming whether the active path has changed.")
+Draw-Arrow $g 540 295 660 295 "#2C5F75"
+Draw-Arrow $g 1080 295 1200 295 "#2C5F75"
+Save-Canvas $canvas "rust-cli-active-path.png"
+
+# Diagram 10: session and compaction cycle
+$canvas = New-Canvas "Session And Compaction Cycle" "How structured session state, usage tracking, and compaction fit into a long-running agent."
+$g = $canvas.Graphics
+Draw-Box $g 110 220 250 150 "#D8E5F2" "New turn" @("user message", "assistant blocks", "tool results")
+Draw-Box $g 430 220 250 150 "#DDEFD9" "Structured Session" @("MessageRole", "ContentBlock", "usage per assistant message")
+Draw-Box $g 750 220 250 150 "#F7E0C5" "UsageTracker" @("latest turn", "cumulative totals", "cost estimate")
+Draw-Box $g 1070 220 280 150 "#E6DCF2" "Compaction decision" @("estimate tokens", "should compact?", "preserve recent messages")
+Draw-Box $g 1420 220 250 150 "#F3D8D8" "Continuation summary" @("summary system message", "pending work", "recent context")
+Draw-Box $g 560 560 660 170 "#FFF0CF" "Long session behavior" @("A long conversation does not have to keep every raw message forever. Rust summarizes the old part, preserves recent state, and continues with an explicit continuation context.")
+Draw-Arrow $g 360 295 430 295 "#2C5F75"
+Draw-Arrow $g 680 295 750 295 "#2C5F75"
+Draw-Arrow $g 1000 295 1070 295 "#2C5F75"
+Draw-Arrow $g 1350 295 1420 295 "#2C5F75"
+Draw-Arrow $g 1540 370 880 560 "#2C5F75"
+Save-Canvas $canvas "rust-session-compaction-cycle.png"
+
+# Diagram 11: config prompt stack
+$canvas = New-Canvas "Config, Prompt, Permission, And Sandbox Stack" "The four foundational layers that shape agent behavior before tool execution."
+$g = $canvas.Graphics
+Draw-Box $g 110 180 300 170 "#D8E5F2" "Config sources" @("user legacy + settings", "project legacy + settings", "local settings.local.json")
+Draw-Box $g 470 180 300 170 "#DDEFD9" "Typed runtime config" @("model", "oauth", "mcp", "plugins", "hooks", "sandbox", "permission mode")
+Draw-Box $g 830 180 300 170 "#F7E0C5" "Prompt context" @("CLAW.md chain", "git status + diff", "instruction budget", "LSP enrichment")
+Draw-Box $g 1190 180 300 170 "#E6DCF2" "Permission gate" @("required tool mode", "authorize()", "prompt or deny")
+Draw-Box $g 1190 450 300 170 "#F3D8D8" "Sandbox gate" @("filesystem mode", "network isolation", "namespace support", "fallback reason")
+Draw-Box $g 350 500 520 170 "#FFF0CF" "Behavior outcome" @("Before any tool executes, the agent has already been shaped by merged config, contextual prompt, explicit permission rules, and the real sandbox capabilities of the host.")
+Draw-Arrow $g 410 265 470 265 "#2C5F75"
+Draw-Arrow $g 770 265 830 265 "#2C5F75"
+Draw-Arrow $g 1130 265 1190 265 "#2C5F75"
+Draw-Arrow $g 1340 350 1340 450 "#2C5F75"
+Draw-Arrow $g 1190 535 870 585 "#2C5F75"
+Save-Canvas $canvas "rust-config-prompt-stack.png"
+
+# Diagram 12: api auth stream map
+$canvas = New-Canvas "API Auth And Streaming Map" "How credentials, provider selection, request translation, and normalized events connect."
+$g = $canvas.Graphics
+Draw-Box $g 120 200 300 170 "#D8E5F2" "Auth inputs" @("API keys", "saved OAuth credentials", "refresh tokens", "env overrides")
+Draw-Box $g 480 200 300 170 "#DDEFD9" "Provider resolution" @("ClawApi", "OpenAI-compatible", "xAI", "model + credential driven")
+Draw-Box $g 840 200 300 170 "#F7E0C5" "Request translation" @("canonical MessageRequest", "vendor-specific HTTP shape", "tool definitions and choice")
+Draw-Box $g 1200 200 300 170 "#E6DCF2" "Streaming layer" @("SSE parser", "retry + backoff", "request id handling")
+Draw-Box $g 640 540 560 180 "#FFF0CF" "Normalized output" @("internal StreamEvent values: message start, deltas, content block events, message stop. This keeps runtime logic independent from vendor wire format.")
+Draw-Arrow $g 420 285 480 285 "#2C5F75"
+Draw-Arrow $g 780 285 840 285 "#2C5F75"
+Draw-Arrow $g 1140 285 1200 285 "#2C5F75"
+Draw-Arrow $g 1350 370 920 540 "#2C5F75"
+Save-Canvas $canvas "rust-api-auth-stream-map.png"
+
+# Diagram 13: plugin lifecycle
+$canvas = New-Canvas "Plugin Lifecycle And Registry Flow" "How plugins move from source to installed state, enabled state, hooks, and tool execution."
+$g = $canvas.Graphics
+Draw-Box $g 110 180 290 160 "#D8E5F2" "Plugin source" @("bundled directory", "external path", "git/url materialized source")
+Draw-Box $g 470 180 290 160 "#DDEFD9" "Manifest validation" @("plugin.json", "permissions", "hooks", "lifecycle", "tool definitions")
+Draw-Box $g 830 180 320 160 "#F7E0C5" "Install registry" @("installed.json", "settings enabled state", "install root", "bundled sync")
+Draw-Box $g 1220 180 360 160 "#E6DCF2" "Runtime aggregation" @("PluginRegistry", "aggregated hooks", "plugin tools", "duplicate name protection")
+Draw-Box $g 420 500 780 190 "#FFF0CF" "Execution path" @("Enabled plugins contribute hooks and tools. Plugin tools shell out with structured JSON input and environment metadata, while lifecycle commands can run initialize and shutdown steps.")
+Draw-Arrow $g 400 260 470 260 "#2C5F75"
+Draw-Arrow $g 760 260 830 260 "#2C5F75"
+Draw-Arrow $g 1150 260 1220 260 "#2C5F75"
+Draw-Arrow $g 1400 340 840 500 "#2C5F75"
+Save-Canvas $canvas "rust-plugin-lifecycle-map.png"
+
+# Diagram 14: service detail
+$canvas = New-Canvas "MCP, LSP, And Session Service Detail" "Three integration styles with different maturity and purposes around the core runtime."
+$g = $canvas.Graphics
+Draw-Box $g 110 190 420 220 "#D8E5F2" "MCP" @("typed configs for many transports", "stdio manager is most operational", "list tools, call tools,", "list/read resources")
+Draw-Box $g 690 190 420 220 "#DDEFD9" "LSP" @("lazy client per language", "workspace diagnostics", "definitions and references", "prompt enrichment for coding context")
+Draw-Box $g 1270 190 420 220 "#F7E0C5" "HTTP/SSE session server" @("create/list/get sessions", "stream events over SSE", "append user message", "small but real service surface")
+Draw-Box $g 370 540 1060 190 "#FFF0CF" "How to interpret maturity" @("These integrations do not all mean the same thing. MCP has broad config modeling but stronger stdio execution today; LSP enriches prompts rather than replacing tools; the session server exposes state but is not yet the whole orchestration plane.")
+Draw-Arrow $g 320 410 700 540 "#2C5F75"
+Draw-Arrow $g 900 410 900 540 "#2C5F75"
+Draw-Arrow $g 1480 410 1040 540 "#2C5F75"
+Save-Canvas $canvas "rust-mcp-lsp-service-detail.png"
+
+# Diagram 15: tests and risk map
+$canvas = New-Canvas "Tests And Risk Map" "Where test coverage is visible in source and where reasoning drift can still hurt the team."
+$g = $canvas.Graphics
+Draw-Box $g 110 180 270 170 "#D8E5F2" "runtime tests" @("conversation loop", "config", "prompt", "compaction", "mcp stdio", "sandbox")
+Draw-Box $g 450 180 270 170 "#DDEFD9" "tools tests" @("todo", "skill", "tool search", "agent", "notebook", "structured output")
+Draw-Box $g 790 180 270 170 "#F7E0C5" "plugins tests" @("install/update", "enable/disable", "bundled sync", "lifecycle", "aggregated hooks")
+Draw-Box $g 1130 180 270 170 "#E6DCF2" "commands tests" @("parse/help", "resume-safe set", "plugin command", "branch/worktree", "commit workflows")
+Draw-Box $g 1470 180 220 170 "#F3D8D8" "lsp tests" @("mock server", "diagnostics", "definition", "references")
+Draw-Box $g 370 500 1040 220 "#FFF0CF" "Risk hotspots" @("1. main.rs versus args.rs/app.rs path drift", "2. README drift versus implemented source", "3. MCP transport assumption drift", "4. no local cargo verification in the current environment")
+Draw-Arrow $g 245 350 720 500 "#2C5F75"
+Draw-Arrow $g 585 350 720 500 "#2C5F75"
+Draw-Arrow $g 925 350 720 500 "#2C5F75"
+Draw-Arrow $g 1265 350 720 500 "#2C5F75"
+Draw-Arrow $g 1580 350 720 500 "#2C5F75"
+Save-Canvas $canvas "rust-tests-risk-map.png"
+
+# Diagram 16: problem solution matrix
+$canvas = New-Canvas "Problem To Solution Matrix" "A visual summary of what the Rust workspace is solving and which crates carry the solution."
+$g = $canvas.Graphics
+Draw-Box $g 110 180 300 140 "#D8E5F2" "Prompt entry" @("claw-cli", "CliAction parser", "REPL or one-shot")
+Draw-Box $g 470 180 300 140 "#DDEFD9" "Agent execution" @("runtime conversation loop", "session, usage, compaction")
+Draw-Box $g 830 180 300 140 "#F7E0C5" "Model connection" @("api providers", "OAuth, retry, SSE")
+Draw-Box $g 1190 180 300 140 "#E6DCF2" "Action layer" @("tools, commands, plugins")
+Draw-Box $g 550 450 560 180 "#FFF0CF" "Context and integration" @("prompt builder, config loader, permissions, sandbox, MCP, LSP, session server, compat harness")
+Draw-Arrow $g 410 250 470 250 "#2C5F75"
+Draw-Arrow $g 770 250 830 250 "#2C5F75"
+Draw-Arrow $g 1130 250 1190 250 "#2C5F75"
+Draw-Arrow $g 260 320 640 450 "#2C5F75"
+Draw-Arrow $g 620 320 760 450 "#2C5F75"
+Draw-Arrow $g 980 320 1000 450 "#2C5F75"
+Draw-Arrow $g 1340 320 1020 450 "#2C5F75"
+Save-Canvas $canvas "rust-problem-solution-matrix.png"
+
 $fontTitle.Dispose()
 $fontSubtitle.Dispose()
 $fontBoxTitle.Dispose()

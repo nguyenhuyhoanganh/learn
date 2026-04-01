@@ -45,6 +45,18 @@ Nếu bạn là fresher mới vào dự án:
 - `python/assets/python-session-lifecycle.png`
 - `python/assets/python-snapshot-parity-map.png`
 
+Ngoài ra thư mục `python/assets/` hiện có thêm các ảnh chuyên đề cho:
+
+- lộ trình đọc
+- parser/subcommand
+- setup/mode branching
+- routing shim
+- transcript/session persistence
+- command/tool/permission
+- test/risk
+- playbook fresher
+- problem/solution matrix
+
 ### Script dựng ảnh
 
 - `python/_scripts/render_diagrams.ps1`
@@ -72,6 +84,20 @@ Nếu bạn là fresher mới vào dự án:
 - `rust/assets/rust-conversation-runtime-flow.png`
 - `rust/assets/rust-provider-tool-plugin-stack.png`
 - `rust/assets/rust-service-surface.png`
+
+Ngoài ra thư mục `rust/assets/` hiện có thêm các ảnh chuyên đề cho:
+
+- lộ trình đọc
+- problem domains
+- crate rings
+- active CLI path
+- session/compaction cycle
+- config/prompt/permission/sandbox
+- auth/provider/streaming
+- plugin lifecycle
+- MCP/LSP/service detail
+- tests/risk
+- problem/solution matrix
 
 ### Script dựng ảnh
 

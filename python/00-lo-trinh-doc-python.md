@@ -40,6 +40,8 @@ Nó giúp người đọc chọn đúng nhánh tài liệu theo mục tiêu:
 
 ## 3. Đọc theo nhu cầu
 
+![Lộ trình đọc Python wiki](assets/python-reading-paths.png)
+
 ### Nếu bạn là fresher mới vào
 
 Đọc theo thứ tự:

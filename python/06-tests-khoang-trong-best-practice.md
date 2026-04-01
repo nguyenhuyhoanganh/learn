@@ -11,6 +11,8 @@ Sau khi hiểu kiến trúc và luồng chạy, fresher thường hỏi 4 câu:
 
 Chương này trả lời trực tiếp 4 câu đó.
 
+![Bản đồ test, khoảng trống và vùng rủi ro](assets/python-test-gap-risk-map.png)
+
 ## 2. Tình trạng test hiện tại
 
 Test chính nằm trong:

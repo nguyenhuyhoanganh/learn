@@ -200,6 +200,145 @@ Draw-Arrow $g 1310 255 1440 350 "#355C7D"
 Draw-Arrow $g 1310 495 1440 430 "#355C7D"
 Save-Canvas $canvas "python-snapshot-parity-map.png"
 
+# Diagram 6: reading paths
+$canvas = New-Canvas "Python Wiki Reading Paths" "Suggested reading routes for orientation, runtime simulation work, and parity-focused work."
+$g = $canvas.Graphics
+Draw-Box $g 110 210 470 520 "#D8E7F5" "Path A: orientation" @("01 overview", "02 architecture", "03 CLI/bootstrap", "04 query engine/session", "05 command/tool/parity", "07 fresher playbook")
+Draw-Box $g 660 210 470 520 "#DCEFD9" "Path B: edit runtime simulation" @("03 CLI/bootstrap", "09 setup/mode branching", "10 routing/execution shim", "11 query engine core", "12 transcript/session persistence", "06 gaps and best practice")
+Draw-Box $g 1210 210 470 520 "#F8E1C6" "Path C: parity and inventory work" @("05 command/tool/parity", "13 command/tool layer", "14 reference data and parity", "06 tests and gaps", "15 problems and solutions")
+Draw-Note $g 110 800 1570 130 "Python is easier to read than Rust but easier to overestimate. Use these paths to separate mirror logic from real runtime implementation intent."
+Save-Canvas $canvas "python-reading-paths.png"
+
+# Diagram 7: port boundary
+$canvas = New-Canvas "Python Port Boundary" "What is mirrored faithfully, what is simulated lightly, and what is still placeholder-only."
+$g = $canvas.Graphics
+Draw-Box $g 120 200 340 190 "#D8E7F5" "Strong mirror surface" @("command inventory", "tool inventory", "archive subsystem names", "reporting and parity audit")
+Draw-Box $g 520 200 340 190 "#DCEFD9" "Light runtime simulation" @("route_prompt()", "ExecutionRegistry", "QueryEnginePort", "session save/load", "transcript buffer")
+Draw-Box $g 920 200 340 190 "#F8E1C6" "Metadata-first packages" @("assistant / bridge / utils", "__init__.py metadata", "sample files", "porting note")
+Draw-Box $g 1320 200 340 190 "#F7D8D8" "Not full production runtime" @("no real provider layer", "tool execution mostly shims", "session model is shallow", "many flows mirror intent only")
+Draw-Box $g 430 540 940 180 "#FFF0CF" "Reading rule" @("Python port is best used as a map of architecture intent, a mirror of visible surface area, and a parity/reporting workspace. It is much less suitable as proof that runtime depth already exists.")
+Draw-Arrow $g 460 295 520 295 "#355C7D"
+Draw-Arrow $g 860 295 920 295 "#355C7D"
+Draw-Arrow $g 1260 295 1320 295 "#355C7D"
+Save-Canvas $canvas "python-port-boundary.png"
+
+# Diagram 8: parser and subcommand map
+$canvas = New-Canvas "Main Parser And Subcommand Map" "How argparse routes Python CLI requests into summary, bootstrap, manifest, and audit flows."
+$g = $canvas.Graphics
+Draw-Box $g 120 190 260 130 "#D8E7F5" "main.py" @("argparse root parser", "subcommands", "stdout rendering")
+Draw-Box $g 450 190 280 130 "#DCEFD9" "summary / manifest" @("inventory and port reports", "manifest surface output")
+Draw-Box $g 800 190 280 130 "#F8E1C6" "bootstrap" @("PortRuntime", "setup + context", "session and report")
+Draw-Box $g 1150 190 280 130 "#E9DDF5" "audit" @("parity_audit", "coverage summary", "snapshot comparison")
+Draw-Box $g 1500 190 200 130 "#F7D8D8" "other" @("help", "utility outputs")
+Draw-Box $g 420 500 940 190 "#FFF0CF" "What this parser really does" @("The Python CLI is a router into mirror and simulation modules. The parser is not just syntax handling; it decides which conceptual layer of the port is being exercised.")
+Draw-Arrow $g 380 255 450 255 "#355C7D"
+Draw-Arrow $g 380 255 800 255 "#355C7D"
+Draw-Arrow $g 380 255 1150 255 "#355C7D"
+Draw-Arrow $g 380 255 1500 255 "#355C7D"
+Save-Canvas $canvas "python-cli-parser-map.png"
+
+# Diagram 9: setup and mode branching
+$canvas = New-Canvas "Setup And Mode Branching" "How setup intent, trust mode, and runtime branch selection are modeled in the Python port."
+$g = $canvas.Graphics
+Draw-Box $g 120 190 300 150 "#D8E7F5" "setup.py" @("prefetch stubs", "project scan", "deferred init", "trusted mode assumptions")
+Draw-Box $g 500 190 300 150 "#DCEFD9" "bootstrap_graph.py" @("phase intent graph", "startup sequence", "mode routing")
+Draw-Box $g 880 190 300 150 "#F8E1C6" "runtime.py" @("bootstrap_session()", "route_prompt()", "registry orchestration")
+Draw-Box $g 1260 190 380 150 "#E9DDF5" "Mode branches" @("inventory/report path", "runtime simulation path", "audit path", "session-oriented path")
+Draw-Box $g 380 510 980 190 "#FFF0CF" "Interpretation" @("These modules mostly mirror startup intent rather than reproducing every side effect of the original system. They are useful for understanding planned flow, not for assuming full runtime parity.")
+Draw-Arrow $g 420 265 500 265 "#355C7D"
+Draw-Arrow $g 800 265 880 265 "#355C7D"
+Draw-Arrow $g 1180 265 1260 265 "#355C7D"
+Save-Canvas $canvas "python-setup-mode-branching.png"
+
+# Diagram 10: routing shim layers
+$canvas = New-Canvas "Routing And Execution Shim Layers" "How prompt matching, registry lookup, and shim execution compose the Python runtime simulation."
+$g = $canvas.Graphics
+Draw-Box $g 120 190 260 140 "#D8E7F5" "Prompt tokens" @("simple tokenize", "score keyword overlap")
+Draw-Box $g 450 190 280 140 "#DCEFD9" "route_prompt()" @("find command/tool matches", "rank top candidates")
+Draw-Box $g 800 190 280 140 "#F8E1C6" "ExecutionRegistry" @("MirroredCommand", "MirroredTool", "registry abstraction")
+Draw-Box $g 1150 190 280 140 "#E9DDF5" "execute_command/tool" @("render shim message", "no deep external effect")
+Draw-Box $g 1500 190 200 140 "#F7D8D8" "Turn output" @("report text", "light usage summary")
+Draw-Box $g 420 520 940 180 "#FFF0CF" "Why this matters" @("The Python port simulates dispatch and intent well, but actual business logic depth often stops at the shim boundary. This is the main line that separates mirror behavior from production behavior.")
+Draw-Arrow $g 380 260 450 260 "#355C7D"
+Draw-Arrow $g 730 260 800 260 "#355C7D"
+Draw-Arrow $g 1080 260 1150 260 "#355C7D"
+Draw-Arrow $g 1430 260 1500 260 "#355C7D"
+Save-Canvas $canvas "python-routing-shim-map.png"
+
+# Diagram 11: test gap risk map
+$canvas = New-Canvas "Tests, Gaps, And Risk Map" "Where the Python port is solid for learning and where it is risky to over-assume runtime depth."
+$g = $canvas.Graphics
+Draw-Box $g 120 190 300 160 "#D8E7F5" "Safer areas" @("snapshot loading", "inventory reporting", "parity summaries", "simple session persistence")
+Draw-Box $g 500 190 300 160 "#DCEFD9" "Moderate confidence" @("query engine simulation", "CLI routing", "transcript lifecycle")
+Draw-Box $g 880 190 300 160 "#F8E1C6" "Higher risk" @("double-submit bootstrap bug", "placeholder subsystems", "shallow permission model")
+Draw-Box $g 1260 190 420 160 "#F7D8D8" "Interpretation risk" @("high command/tool counts can look impressive", "but do not imply equivalent runtime depth", "or true production feature parity")
+Draw-Box $g 380 500 980 200 "#FFF0CF" "Review rule" @("When reviewing Python changes, ask whether the code is changing metadata, simulation flow, or real state mutation. Those three levels are not equivalent and should not be discussed as if they were.")
+Draw-Arrow $g 420 270 580 500 "#355C7D"
+Draw-Arrow $g 800 270 840 500 "#355C7D"
+Draw-Arrow $g 1180 270 1060 500 "#355C7D"
+Draw-Arrow $g 1470 270 1200 500 "#355C7D"
+Save-Canvas $canvas "python-test-gap-risk-map.png"
+
+# Diagram 12: fresher playbook
+$canvas = New-Canvas "Fresher Playbook" "A practical onboarding loop for learning the Python port without getting lost."
+$g = $canvas.Graphics
+Draw-Box $g 120 220 220 130 "#D8E7F5" "Step 1" @("read overview", "understand Python's role")
+Draw-Box $g 400 220 220 130 "#DCEFD9" "Step 2" @("map modules", "know mirror vs runtime")
+Draw-Box $g 680 220 220 130 "#F8E1C6" "Step 3" @("trace CLI flow", "see bootstrap path")
+Draw-Box $g 960 220 220 130 "#E9DDF5" "Step 4" @("trace query engine", "state and session")
+Draw-Box $g 1240 220 220 130 "#F7D8D8" "Step 5" @("read parity and gaps", "learn limitations")
+Draw-Box $g 1520 220 160 130 "#FFF0CF" "Step 6" @("self-check")
+Draw-Box $g 370 520 980 200 "#FFF0CF" "Good onboarding outcome" @("A fresher should be able to explain what Python mirrors well, what it simulates lightly, where state actually mutates, and why Rust remains the real implementation target for runtime depth.")
+Draw-Arrow $g 340 285 400 285 "#355C7D"
+Draw-Arrow $g 620 285 680 285 "#355C7D"
+Draw-Arrow $g 900 285 960 285 "#355C7D"
+Draw-Arrow $g 1180 285 1240 285 "#355C7D"
+Draw-Arrow $g 1460 285 1520 285 "#355C7D"
+Save-Canvas $canvas "python-fresher-playbook.png"
+
+# Diagram 13: transcript persistence detail
+$canvas = New-Canvas "Transcript And Session Persistence Detail" "How in-memory transcript buffering differs from saved session JSON in the Python port."
+$g = $canvas.Graphics
+Draw-Box $g 140 210 300 170 "#D8E7F5" "TranscriptStore" @("append()", "compact()", "replay()", "flush()")
+Draw-Box $g 520 210 320 170 "#DCEFD9" "In-memory entries" @("ordered transcript list", "flushed flag", "not full long-term store")
+Draw-Box $g 920 210 320 170 "#F8E1C6" "SessionStore" @("save_session()", "load_session()", ".port_sessions JSON")
+Draw-Box $g 1320 210 300 170 "#E9DDF5" "Saved payload" @("session_id", "submitted messages", "token counts", "not full structured conversation")
+Draw-Box $g 390 540 1040 190 "#FFF0CF" "Key distinction" @("Transcript buffering and persisted session are related but not equivalent. Flush marks transcript state, while saved session mainly captures prompt history and usage counters.")
+Draw-Arrow $g 440 295 520 295 "#355C7D"
+Draw-Arrow $g 840 295 920 295 "#355C7D"
+Draw-Arrow $g 1240 295 1320 295 "#355C7D"
+Save-Canvas $canvas "python-transcript-persistence-map.png"
+
+# Diagram 14: command tool permission map
+$canvas = New-Canvas "Command, Tool, And Permission Map" "How Python mirrors command/tool surfaces and applies lightweight filtering."
+$g = $canvas.Graphics
+Draw-Box $g 120 200 320 170 "#D8E7F5" "commands.py" @("snapshot load", "search", "plugin-like and skill-like tags", "shim execution")
+Draw-Box $g 500 200 320 170 "#DCEFD9" "tools.py" @("snapshot load", "simple mode", "include_mcp", "ToolPermissionContext")
+Draw-Box $g 880 200 320 170 "#F8E1C6" "permissions.py" @("deny by name", "deny by prefix", "very simple gate")
+Draw-Box $g 1260 200 360 170 "#E9DDF5" "tool_pool / command_graph" @("inventory segmentation", "reporting and grouping", "analysis support")
+Draw-Box $g 400 540 980 200 "#FFF0CF" "Interpretation" @("Python does have a permission and grouping layer, but it is much lighter than the Rust runtime policy model. Read it as a useful mirror aid, not as the final safety architecture.")
+Draw-Arrow $g 440 285 500 285 "#355C7D"
+Draw-Arrow $g 820 285 880 285 "#355C7D"
+Draw-Arrow $g 1200 285 1260 285 "#355C7D"
+Save-Canvas $canvas "python-command-tool-permission-map.png"
+
+# Diagram 15: problem solution matrix
+$canvas = New-Canvas "Python Problem To Solution Matrix" "What the Python port is solving and the exact style of solution it uses."
+$g = $canvas.Graphics
+Draw-Box $g 120 180 300 140 "#D8E7F5" "Inventory problem" @("solved with snapshots", "cached metadata loaders")
+Draw-Box $g 480 180 300 140 "#DCEFD9" "Routing problem" @("solved with simple match + registry", "lightweight orchestration")
+Draw-Box $g 840 180 300 140 "#F8E1C6" "State problem" @("QueryEnginePort", "transcript and session store")
+Draw-Box $g 1200 180 360 140 "#E9DDF5" "Parity problem" @("reference data", "coverage report", "surface audit")
+Draw-Box $g 450 470 920 190 "#FFF0CF" "What is not fully solved here" @("Provider abstraction, deep tool execution, rich permission policy, and production agent runtime are not the strongest parts of the Python port. Those concerns are either simulated lightly or deferred to other implementations.")
+Draw-Arrow $g 420 250 480 250 "#355C7D"
+Draw-Arrow $g 780 250 840 250 "#355C7D"
+Draw-Arrow $g 1140 250 1200 250 "#355C7D"
+Draw-Arrow $g 270 320 760 470 "#355C7D"
+Draw-Arrow $g 630 320 800 470 "#355C7D"
+Draw-Arrow $g 990 320 1040 470 "#355C7D"
+Draw-Arrow $g 1380 320 1080 470 "#355C7D"
+Save-Canvas $canvas "python-problem-solution-matrix.png"
+
 $fontTitle.Dispose()
 $fontSubtitle.Dispose()
 $fontBoxTitle.Dispose()

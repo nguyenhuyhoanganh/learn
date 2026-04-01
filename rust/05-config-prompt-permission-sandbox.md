@@ -14,6 +14,8 @@ Trong hệ thống này, chất lượng hành vi của agent phụ thuộc rấ
 
 Nếu 4 lớp này không hiểu rõ, bạn sẽ sửa feature trong khi không biết agent thực ra đang được dẫn dắt và giới hạn bởi cái gì.
 
+![Stack config, prompt, permission và sandbox](assets/rust-config-prompt-stack.png)
+
 ## 2. Config được nạp từ đâu
 
 `runtime/src/config.rs` dùng `ConfigLoader` để discover config theo thứ tự:

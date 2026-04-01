@@ -12,6 +12,8 @@ Nó phù hợp khi:
 
 ## 2. Bức tranh tổng quát
 
+![Ma trận vấn đề và lời giải trong Rust](assets/rust-problem-solution-matrix.png)
+
 Rust workspace đang giải một bài toán lớn:
 
 Làm sao xây được một AI coding agent chạy qua CLI nhưng vẫn có:

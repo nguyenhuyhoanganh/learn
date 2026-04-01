@@ -124,6 +124,8 @@ Nếu tài liệu không nói rõ điểm này, người mới sẽ lần nhầm
 
 ## 7. Cách chia crate thành 4 vòng
 
+![Mô hình 4 vòng crate](assets/rust-crate-rings.png)
+
 ### Vòng 1: entry và orchestration
 
 - `claw-cli`

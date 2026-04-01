@@ -15,6 +15,8 @@ Nói ngắn gọn:
 - Python ở đây thiên về `catalog + mirror + audit + simulation`.
 - Rust mới là hướng runtime thực chiến.
 
+![Ranh giới năng lực của Python port](assets/python-port-boundary.png)
+
 ## 2. Python giải quyết vấn đề gì?
 
 Nếu chỉ nhìn vào `src/main.py`, có thể tưởng đây là một CLI agent mini.

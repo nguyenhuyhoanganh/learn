@@ -21,6 +21,8 @@ Nó giải đồng thời nhiều bài toán:
 
 Nếu Python port là lớp học kiến trúc và mirror surface, thì Rust là nơi năng lực runtime bắt đầu thành hình thật.
 
+![Các miền vấn đề mà Rust workspace đang giải](assets/rust-problem-domains.png)
+
 ## 2. Bài toán mà code đang giải
 
 ### 2.1. Bài toán 1: biến một prompt thành vòng lặp agent có tool use

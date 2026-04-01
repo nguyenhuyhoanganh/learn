@@ -17,6 +17,8 @@ File này đi theo hướng khác:
 - người review muốn thấy kiến trúc ở mức problem-solution
 - người chuẩn bị port tiếp muốn biết đâu là chiến lược hiện tại
 
+![Ma trận vấn đề và lời giải trong Python port](assets/python-problem-solution-matrix.png)
+
 ## 2. Kết luận ngắn nhất trước khi đi vào chi tiết
 
 Python port hiện không cố giải bài toán:

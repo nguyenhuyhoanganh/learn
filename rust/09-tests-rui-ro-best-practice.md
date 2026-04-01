@@ -10,6 +10,8 @@ File này trả lời 3 câu hỏi thực dụng:
 
 ## 2. Những vùng đã có test đáng kể
 
+![Bản đồ test và vùng rủi ro](assets/rust-tests-risk-map.png)
+
 Qua source hiện tại có thể thấy test xuất hiện ở nhiều crate quan trọng:
 
 ### `runtime`

@@ -11,6 +11,8 @@ File này chỉ tập trung vào hai câu hỏi:
 
 ![Sơ đồ data flow runtime](assets/python-runtime-dataflow.png)
 
+![Bản đồ routing và execution shim](assets/python-routing-shim-map.png)
+
 ## 2. `route_prompt()` trong `runtime.py`
 
 `PortRuntime.route_prompt()` là hàm quyết định:

@@ -15,6 +15,8 @@ Nó phải giải đồng thời 4 việc:
 
 ## 2. Mô hình abstraction của crate
 
+![Bản đồ auth, provider và streaming](assets/rust-api-auth-stream-map.png)
+
 Các trục chính:
 
 - `ProviderClient`

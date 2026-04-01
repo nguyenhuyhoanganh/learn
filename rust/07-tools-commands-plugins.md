@@ -172,6 +172,8 @@ Nhưng source trong `plugins` cho thấy ngược lại.
 
 ### 7.2. Plugin manifest có gì
 
+![Plugin lifecycle và registry flow](assets/rust-plugin-lifecycle-map.png)
+
 Plugin manifest mô tả:
 
 - name

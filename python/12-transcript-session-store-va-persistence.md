@@ -12,6 +12,8 @@ Thực tế đây là 3 lớp liên quan nhưng không giống nhau.
 
 File này tách riêng chủ đề đó để tránh hiểu sai.
 
+![Chi tiết transcript và session persistence](assets/python-transcript-persistence-map.png)
+
 ## 2. `TranscriptStore` trong `transcript.py`
 
 `TranscriptStore` là abstraction nhỏ nhất trong toàn bộ phần persistence.

@@ -16,6 +16,8 @@ Rust runtime kết nối với hệ sinh thái ngoài như thế nào?
 
 ## 2. MCP trong Rust được chia thành mấy lớp
 
+![Chi tiết MCP, LSP và session service](assets/rust-mcp-lsp-service-detail.png)
+
 Ít nhất có 3 lớp:
 
 - config và naming
