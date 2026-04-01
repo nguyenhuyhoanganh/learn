@@ -12,7 +12,16 @@ Nó phù hợp khi:
 
 ## 2. Bức tranh tổng quát
 
-![Ma trận vấn đề và lời giải trong Rust](assets/rust-problem-solution-matrix.png)
+```text
+problem                -> solution style
+---------------------------------------------------------------
+prompt entry           -> claw-cli + CliAction parser
+agent execution        -> ConversationRuntime
+model connection       -> api provider abstraction
+action layer           -> tools + commands + plugins
+context and controls   -> config + prompt + permission + sandbox
+integration surface    -> MCP + LSP + server + compat-harness
+```
 
 Rust workspace đang giải một bài toán lớn:
 

@@ -70,7 +70,20 @@ Mental model tốt nhất:
 - `QueryEnginePort` là một state machine nhỏ
 - mỗi lần `submit_message()` là một lần state machine tiến một bước
 
-![Sơ đồ vòng đời session](assets/python-session-lifecycle.png)
+```text
+user prompt
+  |
+  v
+submit_message()
+  |
+  +--> append to mutable_messages
+  +--> append to transcript
+  +--> update token counters
+  +--> decide stop_reason
+  |
+  v
+return TurnResult
+```
 
 ## 3. `from_workspace()` và `from_saved_session()`
 

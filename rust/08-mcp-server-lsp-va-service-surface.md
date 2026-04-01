@@ -12,11 +12,32 @@ Rust runtime kết nối với hệ sinh thái ngoài như thế nào?
 - dùng LSP để tăng ngữ cảnh code thông minh
 - dùng HTTP/SSE server để expose session ra ngoài
 
-![Bề mặt tích hợp của Rust](assets/rust-service-surface.png)
+```text
+external integrations around runtime
+
+  MCP  ------> external tools/resources
+  LSP  ------> diagnostics/defs/refs -> prompt enrichment
+  server ---> HTTP + SSE session surface
+  compat-harness -> upstream TS parity extraction
+```
 
 ## 2. MCP trong Rust được chia thành mấy lớp
 
-![Chi tiết MCP, LSP và session service](assets/rust-mcp-lsp-service-detail.png)
+```text
+MCP
+  config knows: stdio / sse / http / ws / sdk / managed-proxy
+  operational manager strongest today: stdio
+
+LSP
+  open/change/save doc -> diagnostics + definitions + references -> prompt section
+
+server
+  POST /sessions
+  GET  /sessions
+  GET  /sessions/{id}
+  GET  /sessions/{id}/events   (SSE)
+  POST /sessions/{id}/message
+```
 
 Ít nhất có 3 lớp:
 

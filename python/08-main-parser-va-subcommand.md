@@ -19,7 +19,21 @@ Kết luận rất nhanh sau khi đọc file này:
 - Python layer thiên mạnh về `report + mirror + simulation`
 - chưa phải executor nghiệp vụ production
 
-![Bản đồ parser và subcommand của main.py](assets/python-cli-parser-map.png)
+```text
+main.py parser
+  |
+  +--> inventory/report commands
+  |      summary / manifest / commands / tools / graphs / parity
+  |
+  +--> runtime simulation commands
+  |      route / bootstrap / turn-loop
+  |
+  +--> session commands
+  |      flush-transcript / load-session
+  |
+  +--> mode-branching commands
+         remote-mode / ssh-mode / teleport-mode / ...
+```
 
 ## 2. `build_parser()` đang kể câu chuyện gì?
 

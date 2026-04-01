@@ -9,9 +9,25 @@ File này chỉ tập trung vào hai câu hỏi:
 
 Đây là chỗ rất dễ bị hiểu sai khi mới đọc repo.
 
-![Sơ đồ data flow runtime](assets/python-runtime-dataflow.png)
+```text
+prompt -> route_prompt() -> matches -> ExecutionRegistry -> QueryEnginePort -> output
+```
 
-![Bản đồ routing và execution shim](assets/python-routing-shim-map.png)
+```text
+token overlap / simple scoring
+   |
+   v
+matched commands + tools
+   |
+   v
+MirroredCommand / MirroredTool
+   |
+   v
+execute_command() / execute_tool()
+   |
+   v
+shim message, not deep production business logic
+```
 
 ## 2. `route_prompt()` trong `runtime.py`
 

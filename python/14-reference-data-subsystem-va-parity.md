@@ -16,7 +16,20 @@ Các nhóm file cốt lõi:
 - `archive_surface_snapshot.json`
 - `subsystems/*.json`
 
-![Sơ đồ snapshot và parity](assets/python-snapshot-parity-map.png)
+```text
+frozen reference data
+   |
+   +--> command snapshot
+   +--> tool snapshot
+   +--> archive surface snapshot
+   +--> subsystem metadata
+   |
+   v
+parity_audit.py
+   |
+   v
+coverage, inventory ratio, subsystem visibility
+```
 
 ## 2. `archive_surface_snapshot.json` nói gì?
 

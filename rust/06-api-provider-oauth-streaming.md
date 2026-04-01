@@ -15,7 +15,28 @@ Nó phải giải đồng thời 4 việc:
 
 ## 2. Mô hình abstraction của crate
 
-![Bản đồ auth, provider và streaming](assets/rust-api-auth-stream-map.png)
+```text
+credentials / env / saved OAuth
+           |
+           v
+     provider resolution
+   (Claw / OpenAI / xAI)
+           |
+           v
+   canonical request types
+           |
+           v
+   vendor-specific translation
+           |
+           v
+   SSE / streaming / retry / backoff
+           |
+           v
+   normalized StreamEvent
+           |
+           v
+         runtime
+```
 
 Các trục chính:
 

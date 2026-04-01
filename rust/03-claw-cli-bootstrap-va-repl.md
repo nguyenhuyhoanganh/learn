@@ -113,7 +113,23 @@ Mode này:
 
 ## 6. Bootstrap flow thực tế
 
-![Luồng bootstrap và REPL](assets/rust-cli-bootstrap-map.png)
+```text
+args
+  |
+  v
+parse_args()
+  |
+  v
+CliAction
+  +--> Prompt ----+
+  +--> Repl ------+--> load config -> load system prompt
+  +--> Resume ----+                    -> load plugins/tools
+  +--> Login ------------------------> OAuth loopback flow
+  +--> Utility ----------------------> manifests / version / agents / skills
+                                       |
+                                       v
+                                     LiveCli
+```
 
 Luồng khái niệm:
 
@@ -182,7 +198,14 @@ Logout thì đơn giản hơn:
 
 ## 9. `args.rs` và `app.rs` nên hiểu ra sao
 
-![Đường chạy CLI thật và các nhánh phụ](assets/rust-cli-active-path.png)
+```text
+ACTIVE PATH
+  Cargo binary -> src/main.rs -> run() -> parse_args() -> CliAction -> LiveCli
+
+SECONDARY / NOT WIRED INTO MAIN PATH
+  src/args.rs
+  src/app.rs
+```
 
 Đây là điểm phải ghi thật rõ cho người mới.
 

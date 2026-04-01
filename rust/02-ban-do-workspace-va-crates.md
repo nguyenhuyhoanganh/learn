@@ -2,7 +2,19 @@
 
 ## 1. Sơ đồ tổng thể
 
-![Bản đồ crate Rust](assets/rust-workspace-map.png)
+```text
+Top entry:
+  [claw-cli]
+
+Core:
+  [runtime] <-> [api]
+
+Capability layer:
+  [tools] [commands] [plugins] [lsp] [mcp inside runtime]
+
+Edge/support layer:
+  [server] [compat-harness]
+```
 
 ## 2. Danh sách crate và vai trò
 
@@ -124,7 +136,19 @@ Nếu tài liệu không nói rõ điểm này, người mới sẽ lần nhầm
 
 ## 7. Cách chia crate thành 4 vòng
 
-![Mô hình 4 vòng crate](assets/rust-crate-rings.png)
+```text
+Ring 1: entry
+  claw-cli
+
+Ring 2: core execution
+  runtime + api
+
+Ring 3: capability
+  tools + commands + plugins + lsp + mcp-related runtime modules
+
+Ring 4: edge/support
+  server + compat-harness
+```
 
 ### Vòng 1: entry và orchestration
 

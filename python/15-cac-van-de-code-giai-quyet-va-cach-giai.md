@@ -17,7 +17,15 @@ File này đi theo hướng khác:
 - người review muốn thấy kiến trúc ở mức problem-solution
 - người chuẩn bị port tiếp muốn biết đâu là chiến lược hiện tại
 
-![Ma trận vấn đề và lời giải trong Python port](assets/python-problem-solution-matrix.png)
+```text
+problem                -> solution style in Python port
+---------------------------------------------------------------
+inventory visibility   -> snapshots + cached metadata loaders
+routing simulation     -> simple matching + registry bridge
+state demonstration    -> QueryEnginePort + transcript/session store
+parity measurement     -> reference data + audit reports
+deep runtime execution -> mostly not solved here; simulated lightly
+```
 
 ## 2. Kết luận ngắn nhất trước khi đi vào chi tiết
 

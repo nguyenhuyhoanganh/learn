@@ -37,29 +37,10 @@ Nếu bạn là fresher mới vào dự án:
 - `python/14-reference-data-subsystem-va-parity.md`
 - `python/15-cac-van-de-code-giai-quyet-va-cach-giai.md`
 
-### Ảnh minh họa
+### Sơ đồ minh hoạ
 
-- `python/assets/python-module-map.png`
-- `python/assets/python-runtime-dataflow.png`
-- `python/assets/python-bootstrap-sequence.png`
-- `python/assets/python-session-lifecycle.png`
-- `python/assets/python-snapshot-parity-map.png`
-
-Ngoài ra thư mục `python/assets/` hiện có thêm các ảnh chuyên đề cho:
-
-- lộ trình đọc
-- parser/subcommand
-- setup/mode branching
-- routing shim
-- transcript/session persistence
-- command/tool/permission
-- test/risk
-- playbook fresher
-- problem/solution matrix
-
-### Script dựng ảnh
-
-- `python/_scripts/render_diagrams.ps1`
+- Các sơ đồ Python hiện được nhúng trực tiếp trong từng file markdown dưới dạng code block ASCII.
+- Không còn phụ thuộc ảnh để đọc luồng kiến trúc.
 
 ## Phần Rust
 
@@ -77,31 +58,10 @@ Ngoài ra thư mục `python/assets/` hiện có thêm các ảnh chuyên đề 
 - `rust/09-tests-rui-ro-best-practice.md`
 - `rust/10-cac-van-de-rust-giai-quyet-va-cach-giai.md`
 
-### Ảnh minh họa
+### Sơ đồ minh hoạ
 
-- `rust/assets/rust-workspace-map.png`
-- `rust/assets/rust-cli-bootstrap-map.png`
-- `rust/assets/rust-conversation-runtime-flow.png`
-- `rust/assets/rust-provider-tool-plugin-stack.png`
-- `rust/assets/rust-service-surface.png`
-
-Ngoài ra thư mục `rust/assets/` hiện có thêm các ảnh chuyên đề cho:
-
-- lộ trình đọc
-- problem domains
-- crate rings
-- active CLI path
-- session/compaction cycle
-- config/prompt/permission/sandbox
-- auth/provider/streaming
-- plugin lifecycle
-- MCP/LSP/service detail
-- tests/risk
-- problem/solution matrix
-
-### Script dựng ảnh
-
-- `rust/_scripts/render_diagrams.ps1`
+- Các sơ đồ Rust hiện được nhúng trực tiếp trong từng file markdown dưới dạng code block ASCII.
+- Không còn phụ thuộc ảnh để đọc luồng kiến trúc.
 
 ## Gợi ý lộ trình cho fresher
 
@@ -135,5 +95,5 @@ Ngoài ra thư mục `rust/assets/` hiện có thêm các ảnh chuyên đề ch
 - Python và Rust không ở cùng mức độ hoàn thiện.
 - Python phù hợp để hiểu bề mặt và intent kiến trúc.
 - Rust phù hợp để hiểu runtime agent thực sự đang được xây như thế nào.
-- Các sơ đồ Mermaid đã được thay bằng ảnh PNG thật để markdown viewer hiển thị ổn định hơn.
+- Các sơ đồ Mermaid và ảnh nhúng đã được thay bằng code block ASCII để đọc ổn định ngay trong markdown.
 - Riêng phần Rust trong vòng tài liệu hiện tại được xác nhận bằng static code reading; môi trường local hiện không có `cargo` trong `PATH`, nên chưa chạy build/test lại trực tiếp từ máy này.

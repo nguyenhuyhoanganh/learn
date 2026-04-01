@@ -10,7 +10,24 @@ Nếu `runtime` là tim và `api` là miệng tai kết nối với model, thì:
 
 Ba crate này giải bài toán: làm sao để agent không chỉ trả lời, mà còn có thể hành động theo cách có tổ chức.
 
-![Stack tool, command và plugin](assets/rust-provider-tool-plugin-stack.png)
+```text
+model sees:
+  ToolDefinition list
+       |
+       v
+GlobalToolRegistry
+  +--> built-in tools
+  +--> plugin tools
+       |
+       v
+PermissionPolicy
+       |
+       v
+runtime executes tool
+
+parallel user workflow layer:
+  slash command -> commands crate -> git/plugin/agent/skill UX
+```
 
 ## 2. Crate `tools` làm gì
 
@@ -172,7 +189,21 @@ Nhưng source trong `plugins` cho thấy ngược lại.
 
 ### 7.2. Plugin manifest có gì
 
-![Plugin lifecycle và registry flow](assets/rust-plugin-lifecycle-map.png)
+```text
+plugin source
+   |
+   v
+manifest validation
+   |
+   v
+install registry + enabled state
+   |
+   v
+PluginRegistry
+   +--> aggregated hooks
+   +--> plugin tools
+   +--> lifecycle init/shutdown
+```
 
 Plugin manifest mô tả:
 

@@ -11,7 +11,19 @@ Sau khi hiểu kiến trúc và luồng chạy, fresher thường hỏi 4 câu:
 
 Chương này trả lời trực tiếp 4 câu đó.
 
-![Bản đồ test, khoảng trống và vùng rủi ro](assets/python-test-gap-risk-map.png)
+```text
+safer areas
+  inventory loading / reports / parity summaries / basic session persistence
+
+mid-risk areas
+  routing / bootstrap simulation / query engine flow
+
+high-risk interpretation areas
+  placeholder subsystems
+  shallow permission model
+  double-submit bootstrap bug
+  "looks complete" but runtime depth is still limited
+```
 
 ## 2. Tình trạng test hiện tại
 

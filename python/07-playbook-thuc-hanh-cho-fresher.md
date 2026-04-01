@@ -13,7 +13,15 @@ Nếu là người mới, hãy đọc theo thứ tự:
 4. `03-cli-bootstrap-routing.md`
 5. file playbook này
 
-![Playbook fresher cho Python port](assets/python-fresher-playbook.png)
+```text
+Step 1 -> read overview
+Step 2 -> map modules
+Step 3 -> trace CLI flow
+Step 4 -> trace query engine state
+Step 5 -> read parity + gaps
+Step 6 -> self-check:
+          can you explain mirror vs simulation vs real mutation?
+```
 
 ## 2. Bản đồ học nhanh trong 60-90 phút
 

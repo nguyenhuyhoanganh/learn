@@ -28,7 +28,20 @@ Các file cốt lõi:
 
 Sơ đồ nguồn sự thật:
 
-![Sơ đồ snapshot và parity](assets/python-snapshot-parity-map.png)
+```text
+reference_data/
+  |
+  +--> commands_snapshot.json
+  +--> tools_snapshot.json
+  +--> archive_surface_snapshot.json
+  +--> subsystems/*.json
+          |
+          v
+commands.py / tools.py / parity_audit.py / command_graph.py / tool_pool.py
+          |
+          v
+inventory reports + parity reports + mirror lookup
+```
 
 Ảnh trên cho thấy đúng tinh thần của lớp Python này:
 

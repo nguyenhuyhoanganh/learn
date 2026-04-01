@@ -12,7 +12,22 @@ Thực tế đây là 3 lớp liên quan nhưng không giống nhau.
 
 File này tách riêng chủ đề đó để tránh hiểu sai.
 
-![Chi tiết transcript và session persistence](assets/python-transcript-persistence-map.png)
+```text
+TranscriptStore
+  append / compact / replay / flush
+        |
+        v
+in-memory entries only
+
+SessionStore
+  save_session / load_session
+        |
+        v
+.port_sessions/*.json
+
+note:
+  transcript buffer != persisted session payload
+```
 
 ## 2. `TranscriptStore` trong `transcript.py`
 

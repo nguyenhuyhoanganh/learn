@@ -52,7 +52,23 @@ Tức là:
 
 ### 3.2. Flow dữ liệu trong runtime mô phỏng
 
-![Sơ đồ data flow runtime](assets/python-runtime-dataflow.png)
+```text
+prompt
+  |
+  v
+route_prompt()
+  |
+  v
+ExecutionRegistry
+  |
+  v
+QueryEnginePort.submit_message()
+  |
+  +--> mutable_messages
+  +--> transcript entries
+  +--> usage totals
+  +--> persisted session JSON
+```
 
 Ảnh trên cho thấy data flow thật sự của Python port:
 

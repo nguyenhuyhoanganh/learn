@@ -15,7 +15,19 @@ Nói ngắn gọn:
 - Python ở đây thiên về `catalog + mirror + audit + simulation`.
 - Rust mới là hướng runtime thực chiến.
 
-![Ranh giới năng lực của Python port](assets/python-port-boundary.png)
+```text
+strongest today
+  snapshots + reports + parity + inventory mirror
+
+medium depth
+  route_prompt + bootstrap simulation + query engine + light session store
+
+weak / placeholder
+  deep provider runtime
+  rich tool execution
+  production-grade permission model
+  full structured conversation runtime
+```
 
 ## 2. Python giải quyết vấn đề gì?
 
@@ -133,7 +145,16 @@ Một số phần rõ ràng là placeholder hoặc stub:
 
 ## 7. Sơ đồ định vị nhanh
 
-![Sơ đồ module Python port](assets/python-module-map.png)
+```text
+CLI surface
+  main.py
+    |
+    +--> mirror layer       -> commands.py / tools.py
+    +--> runtime layer      -> runtime.py / query_engine.py
+    +--> persistence layer  -> transcript.py / session_store.py
+    +--> audit layer        -> manifest / parity / graphs
+    +--> reference data     -> snapshots + subsystem metadata
+```
 
 Ảnh trên là bản đồ nhanh của toàn bộ Python port:
 

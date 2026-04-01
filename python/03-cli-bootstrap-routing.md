@@ -104,7 +104,19 @@ Python tạo một `RuntimeSession` và in ra report hoàn chỉnh.
 
 ### 4.1. Trình tự thực hiện
 
-![Sơ đồ bootstrap session](assets/python-bootstrap-sequence.png)
+```text
+CLI command
+   |
+   v
+PortRuntime.bootstrap_session()
+   |
+   +--> build_port_context()
+   +--> run_setup(trusted=True)
+   +--> route_prompt()
+   +--> registry shims
+   +--> QueryEnginePort
+   +--> persist session + render report
+```
 
 Ảnh trên bám sát flow hiện tại của `bootstrap_session()`.
 Nó cũng cố ý làm nổi bật bug quan trọng nhất: prompt hiện bị submit hai lần trong cùng một lượt bootstrap.

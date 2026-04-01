@@ -261,7 +261,22 @@ Vì thế:
 
 ## 9. Sơ đồ trạng thái của một session
 
-![Sơ đồ vòng đời session](assets/python-session-lifecycle.png)
+```text
+new engine
+   |
+   v
+ready state (session_id + mutable_messages + usage)
+   |
+   v
+submit_message()
+   |
+   +--> completed
+   +--> max_budget_reached
+   +--> max_turns_reached
+   |
+   v
+flush_transcript() + save_session()
+```
 
 Ảnh trên giúp phân biệt rõ:
 
