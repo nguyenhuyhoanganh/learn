@@ -7,10 +7,11 @@ Nó hướng dẫn cách **tự tay đi qua code Python** để hiểu dự án 
 
 Nếu là người mới, hãy đọc theo thứ tự:
 
-1. `01-tong-quan-python-port.md`
-2. `02-kien-truc-thanh-phan.md`
-3. `03-cli-bootstrap-routing.md`
-4. file playbook này
+1. `00-lo-trinh-doc-python.md`
+2. `01-tong-quan-python-port.md`
+3. `02-kien-truc-thanh-phan.md`
+4. `03-cli-bootstrap-routing.md`
+5. file playbook này
 
 ## 2. Bản đồ học nhanh trong 60-90 phút
 

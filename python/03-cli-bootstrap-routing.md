@@ -104,30 +104,10 @@ Python tạo một `RuntimeSession` và in ra report hoàn chỉnh.
 
 ### 4.1. Trình tự thực hiện
 
-```mermaid
-sequenceDiagram
-    participant U as User
-    participant M as main.py
-    participant R as PortRuntime
-    participant C as context.py
-    participant S as setup.py
-    participant Q as QueryEnginePort
-    participant E as ExecutionRegistry
-    participant P as session_store.py
+![Sơ đồ bootstrap session](assets/python-bootstrap-sequence.png)
 
-    U->>M: bootstrap "review MCP tool"
-    M->>R: bootstrap_session(prompt)
-    R->>C: build_port_context()
-    R->>S: run_setup(trusted=True)
-    R->>R: route_prompt()
-    R->>E: build_execution_registry()
-    R->>Q: stream_submit_message(...)
-    R->>Q: submit_message(...)
-    R->>Q: persist_session()
-    Q->>P: save_session()
-    R-->>M: RuntimeSession
-    M-->>U: Markdown report
-```
+Ảnh trên bám sát flow hiện tại của `bootstrap_session()`.
+Nó cũng cố ý làm nổi bật bug quan trọng nhất: prompt hiện bị submit hai lần trong cùng một lượt bootstrap.
 
 ### 4.2. Kết quả report gồm gì?
 

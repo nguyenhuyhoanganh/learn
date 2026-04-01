@@ -131,23 +131,16 @@ Một số phần rõ ràng là placeholder hoặc stub:
 
 ## 7. Sơ đồ định vị nhanh
 
-```mermaid
-flowchart TD
-    A[src/main.py] --> B[port_manifest.py]
-    A --> C[commands.py]
-    A --> D[tools.py]
-    A --> E[runtime.py]
-    A --> F[setup.py]
-    A --> G[parity_audit.py]
-    C --> H[reference_data/commands_snapshot.json]
-    D --> I[reference_data/tools_snapshot.json]
-    E --> J[query_engine.py]
-    E --> K[execution_registry.py]
-    J --> L[transcript.py]
-    J --> M[session_store.py]
-    G --> N[reference_data/archive_surface_snapshot.json]
-    O[src/*/__init__.py placeholder packages] --> P[reference_data/subsystems/*.json]
-```
+![Sơ đồ module Python port](assets/python-module-map.png)
+
+Ảnh trên là bản đồ nhanh của toàn bộ Python port:
+
+- `main.py` là cửa vào CLI
+- `commands.py` và `tools.py` lấy dữ liệu từ snapshot JSON
+- `runtime.py` điều phối luồng mô phỏng
+- `query_engine.py` giữ state turn/session
+- `transcript.py` và `session_store.py` phụ trách lưu vết
+- các package placeholder đọc metadata từ `reference_data/subsystems/*.json`
 
 ## 8. Kết luận ngắn
 

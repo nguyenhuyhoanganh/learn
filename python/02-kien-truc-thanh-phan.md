@@ -52,18 +52,14 @@ Tức là:
 
 ### 3.2. Flow dữ liệu trong runtime mô phỏng
 
-```mermaid
-flowchart LR
-    U[User prompt] --> R[PortRuntime.route_prompt]
-    R --> CM[Matched commands]
-    R --> TM[Matched tools]
-    CM --> ER[ExecutionRegistry]
-    TM --> ER
-    ER --> QE[QueryEnginePort.submit_message]
-    QE --> TS[TranscriptStore]
-    QE --> SS[SessionStore]
-    QE --> OUT[TurnResult / stream events]
-```
+![Sơ đồ data flow runtime](assets/python-runtime-dataflow.png)
+
+Ảnh trên cho thấy data flow thật sự của Python port:
+
+- prompt đi vào `route_prompt()`
+- match được bridge sang `ExecutionRegistry`
+- state chỉ mutate khi vào `QueryEnginePort.submit_message()`
+- transcript và session file là hai lớp khác nhau
 
 ## 4. Chi tiết từng nhóm module
 

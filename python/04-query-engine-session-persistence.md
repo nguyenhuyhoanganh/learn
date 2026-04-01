@@ -261,18 +261,14 @@ Vì thế:
 
 ## 9. Sơ đồ trạng thái của một session
 
-```mermaid
-stateDiagram-v2
-    [*] --> NewEngine
-    NewEngine --> Ready: from_workspace / from_saved_session
-    Ready --> Processing: submit_message
-    Processing --> Ready: stop_reason=completed
-    Processing --> BudgetStop: stop_reason=max_budget_reached
-    Processing --> TurnStop: stop_reason=max_turns_reached
-    Ready --> Persisting: persist_session
-    Persisting --> Saved: save_session JSON
-    Saved --> Ready: continue with same in-memory object
-```
+![Sơ đồ vòng đời session](assets/python-session-lifecycle.png)
+
+Ảnh trên giúp phân biệt rõ:
+
+- engine mới được tạo như thế nào
+- state chuyển sang `Processing` lúc nào
+- các điều kiện dừng ở đâu
+- transcript buffer khác persisted session file ra sao
 
 ## 10. Điểm mạnh của thiết kế hiện tại
 

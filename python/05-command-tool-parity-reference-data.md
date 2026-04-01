@@ -28,15 +28,13 @@ Các file cốt lõi:
 
 Sơ đồ nguồn sự thật:
 
-```mermaid
-flowchart TD
-    A[reference_data/commands_snapshot.json] --> B[commands.py]
-    C[reference_data/tools_snapshot.json] --> D[tools.py]
-    E[reference_data/archive_surface_snapshot.json] --> F[parity_audit.py]
-    G[reference_data/subsystems/*.json] --> H[placeholder packages]
-    B --> I[command graph / route / exec shim]
-    D --> J[tool pool / route / permission filtering / exec shim]
-```
+![Sơ đồ snapshot và parity](assets/python-snapshot-parity-map.png)
+
+Ảnh trên cho thấy đúng tinh thần của lớp Python này:
+
+- dữ liệu gốc đến từ snapshot/reference data
+- code Python phần lớn là adapter và report layer
+- parity ở đây chủ yếu là parity bề mặt, không phải parity runtime đầy đủ
 
 Điều này có nghĩa:
 
